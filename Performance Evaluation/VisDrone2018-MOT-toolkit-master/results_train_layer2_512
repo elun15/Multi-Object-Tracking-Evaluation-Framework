@@ -1,0 +1,23 @@
+ ********************* Your VisDrone2018 Results *********************
+ IDF1  IDP  IDR| Rcll  Prcn   FAR|   GT  MT   PT   ML|    FP    FN   IDs    FM|  MOTA  MOTP MOTAL 
+ 63.7 72.7 56.7| 67.4  86.5  0.98| 53442394 1492 1451| 85778266485  7117 11454|  56.0  79.6  56.9 
+
+evaluating tracking car:
+ IDF1  IDP  IDR| Rcll  Prcn   FAR|   GT  MT   PT   ML|    FP    FN   IDs    FM|  MOTA  MOTP MOTAL 
+ 70.2 74.9 66.0| 77.7  88.2  2.47| 30141793  795  426| 52115111534  4955  5987|  66.3  80.6  67.3 
+
+evaluating tracking bus:
+ IDF1  IDP  IDR| Rcll  Prcn   FAR|   GT  MT   PT   ML|    FP    FN   IDs    FM|  MOTA  MOTP MOTAL 
+ 73.0 77.0 69.4| 78.0  86.5  0.12|   55  32   11   12|  1170  2119    44    77|  65.3  85.1  65.8 
+
+evaluating tracking truck:
+ IDF1  IDP  IDR| Rcll  Prcn   FAR|   GT  MT   PT   ML|    FP    FN   IDs    FM|  MOTA  MOTP MOTAL 
+ 66.7 79.6 57.4| 65.1  90.3  0.14|  159  76   31   50|  2120 10581    81   233|  57.8  83.6  58.1 
+
+evaluating tracking pedestrian:
+ IDF1  IDP  IDR| Rcll  Prcn   FAR|   GT  MT   PT   ML|    FP    FN   IDs    FM|  MOTA  MOTP MOTAL 
+ 47.0 64.5 37.0| 47.6  82.9  0.98| 1822 387  598  833| 22648121021  1919  4809|  36.9  74.6  37.8 
+
+evaluating tracking van:
+ IDF1  IDP  IDR| Rcll  Prcn   FAR|   GT  MT   PT   ML|    FP    FN   IDs    FM|  MOTA  MOTP MOTAL 
+ 59.1 71.2 50.5| 54.2  76.5  0.41|  294 106   57  130|  7725 21230   118   348|  37.3  81.9  37.6 
