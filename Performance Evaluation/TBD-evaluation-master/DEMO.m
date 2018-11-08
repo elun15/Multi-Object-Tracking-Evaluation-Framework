@@ -5,6 +5,7 @@
 clc; clear; close all force;
 addpath(genpath('.'));
 
+
 fprintf('This file serves as a DEMO and reproduces the results presented in the paper.\n');
 fprintf('That means we tested two trackers NN and TC_ODAL on PETS09-S2L2.\n');
 fprintf('Additionally, we also present results from TUD-Stadtmitte and AVG-TownCentre to show how tracker can be tested on more sequences simultaneously.\n\n');

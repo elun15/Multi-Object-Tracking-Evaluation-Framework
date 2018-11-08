@@ -4,9 +4,9 @@ colors = 'mcyrgb';
 warning('off', 'MATLAB:legend:IgnoringExtraEntries');
 
 %% PARAMETERS
-baseFolder = '';
+baseFolder = '../../';
 
-% trackers to compare
+% Trackers to compare
 trackerName = {'NN', 'TC_ODAL'};
 titleName   = {'trk1', 'trk2'};
 
@@ -22,15 +22,15 @@ res_tp  = {{'robustness', 0.5:0.1:1, 'Precision', 'Recall', 'northeast'}, ...
 
 %% COMPUTE DETECTION PERFORMANCES
 if plotDetection
-    detFile = fullfile(baseFolder, seqName, 'det', 'det.txt');
-    gtFile  = fullfile(baseFolder, seqName, 'gt', 'gt.txt');
+    detFile = fullfile(baseFolder,'Datasets', seqName, 'det', 'det.txt');
+    gtFile  = fullfile(baseFolder, 'Datasets', seqName, 'gt', 'gt.txt');
     [detP, detR] = computeDetectorPerformances(detFile, gtFile);
 end
 
 %% START PLOTTING
 for t = 1 : length(trackerName)
     for r = 1 : length(res_tp)
-        dataFolder  = fullfile(baseFolder, 'trackers', ...
+        dataFolder  = fullfile(baseFolder, 'Trackers', ...
             trackerName{t}, seqName, sprintf('%s_results', res_tp{r}{1}));
         
         % load results
@@ -101,7 +101,7 @@ for t = 1 : length(trackerName)
             rr = (detR-res_tp{r}{2}(1))*(length(res_tp{r}{2})-1)/(res_tp{r}{2}(end)-res_tp{r}{2}(1))+1;
             pp = length(res_tp{r}{2})-(detP-res_tp{r}{2}(1))*(length(res_tp{r}{2})-1)/(res_tp{r}{2}(end)-res_tp{r}{2}(1));
             
-            det_res = load(fullfile(baseFolder, 'trackers', ...
+            det_res = load(fullfile(baseFolder, 'Trackers', ...
                 trackerName{t}, seqName, 'det_results', 'results.mat'));
             v = max(1, round((det_res.out{1}.results.mets2d.m(12) / 100) * size(h, 1)));
             
@@ -131,7 +131,7 @@ for t = 1 : length(trackerName)
         end
         % add true detection TL
         if isequal(res_tp{r}{1}, 'robustness') && plotDetection
-            det_res = load(fullfile(baseFolder, 'trackers', ...
+            det_res = load(fullfile(baseFolder, 'Trackers', ...
                 trackerName{t}, seqName, 'det_results', 'results.mat'));
             v = sort(det_res.out{1}.results.mets2d.TLP, 'descend');
             plot(v, 'k', 'LineWidth', 1.5);
@@ -152,7 +152,7 @@ for t = 1 : length(trackerName)
             this_legend{i} = sprintf('%s: %2.2f, %s: %2.2f', res_tp{r}{3}(1), range(i), res_tp{r}{4}(1), range(6-i+1));
         end
         if isequal(res_tp{r}{1}, 'robustness') && plotDetection
-            det_res = load(fullfile(baseFolder, 'trackers', ...
+            det_res = load(fullfile(baseFolder, 'Trackers', ...
                 trackerName{t}, seqName, 'det_results', 'results.mat'));
             v = sort(det_res.out{1}.results.mets2d.TLP, 'descend');
             plot(v, 'k', 'LineWidth', 1.5);

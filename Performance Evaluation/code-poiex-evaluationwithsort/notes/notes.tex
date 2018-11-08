@@ -1,0 +1,58 @@
+\documentclass[hidelinks,11pt,a4paper]{report}
+
+\usepackage{multirow, pdflscape, amssymb, url, hyperref, enumitem, amsmath, graphics, graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[left=0.6in,top=0.5in,right=0.6in,bottom=0.65in]{geometry}
+
+\pagenumbering{gobble} % remove page numbering
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\noindent \textbf{Pre-test and post-test analysis}
+
+\begin{itemize}
+\item This field is referred to as \emph{inferential statistics} or \emph{inferential test}. This is used when you want to compare the average performance of two groups on a single measure to see if there is a difference.
+\item Whenever you wish to compare the average performance between two groups you should consider the t-test for differences between groups.
+\item Most of the major inferential statistics come from a general family of statistical models known as the General Linear Model. This includes the t-test, Analysis of Variance (ANOVA), Analysis of Covariance (ANCOVA).
+\item One of the keys to understanding how groups are compared is embodied in the notion of the ``dummy" variable. Essentially a dummy variable is one that uses discrete numbers, usually 0 and 1, to represent different groups in your study. For instance, by including a simple dummy variable in an model, I can model two separate lines (one for each treatment group) with a single equation. A dummy variable is a numerical variable used in regression analysis to represent subgroups of the sample in your study. In research design, a dummy variable is often used to distinguish different treatment groups. The dummy variables act like 'switches' that turn various parameters on and off in an equation.
+\item When we are looking at the differences between scores for two groups, we have to judge the difference between their means relative to the spread or variability of their scores. The t-test does just this. The formula for the t-test is a ratio. The top part of the ratio is just the difference between the two means or averages. The bottom part is a measure of the variability or dispersion of the scores. 
+\item When one wants to analyse the validity of some treatments, people are randomly assigned to different groups and different treatments are given to these groups. One way to test the effectiveness of the treatment is to measure the post-test data. Although people a randomly assigned to different groups there still could be some dependency on the initial conditions of the patients that may introduce biases in the data analysis.
+\item A solution to this problem is to use pre-test and post-data on the different groups to compute a \emph{gain score}.
+\item A test that can be carried out on this data is by analysing the \emph{variance}: (i) t-test of the difference, (ii) 2-group ANOVA of the differences, (iii) repeated measures analysis of variance. Another approach is by analysing the \emph{covariance}, where: the post-test measurement is the response, the treatment is the design factor and the pre-test is a covariate.
+\item If a treatment is the same same for all the participants with same initial conditions, pre-test and post-test data are expected to have similar values. Also in the case of different pre-test values, therefore different post-test values, a test would involve fitting separate regression lines with common slope and testing different intercepts (this is the analysis of the covariance).
+\item As a general rule:
+	\begin{itemize}
+	\item Use t tests when experimental groups are defined by a variable that is relevant to the change in measurement.
+	\item Use analysis of covariance for experiments in which subjects are assigned randomly to treatment groups, regardless of whether there is any bias with respect to the initial measurement.
+	\end{itemize}
+\end{itemize}
+
+\noindent \textbf{T-Test}
+Give the average of the measured values of the treatment group, $X_T$, and of the control group, $X_C$, the \emph{t-test} is computed as:
+%-------------
+\begin{equation}
+t-test = \frac{\bar{X}_T - \bar{X}_C}{\sqrt{\frac{\sigma_T^2}{n_T} + \frac{\sigma_C^2}{n_C} }}
+\end{equation}
+%-------------
+where $\bar{\cdot}$ is the average, $\sigma^2$ is the variance of the values and $n$ is the number of participants within the group. Once you compute the t-value you have to look it up in a table of significance to test whether the ratio is large enough to say that the difference between the groups is not likely to have been a chance finding. If it is, you can conclude that the difference between the means for the two groups is different (even given the variability). The t-test, one-way Analysis of Variance (ANOVA) and a form of regression analysis are mathematically equivalent (see the statistical analysis of the posttest-only randomized experimental design) and would yield identical results.
+
+\noindent \textbf{ANCOVA}
+\begin{itemize}
+\item ANCOVA is biased when used with Non-Equivalent Groups Design (NEGD). An example of NEGD can be made by adding five points to each treatment group participant's pretest score. So all the participants in the treatment group all start with an advantage on average.
+\item ANCOVA analysis is biased when used with NEGD. ANCOVA is unbiased when used with a pretest-posttest randomized experiment.
+\item A bias can be due to: (i) pretest measurement error which leads to the attenuation or "flattening" of the slopes in the regression lines or (ii) group nonequivalence.
+\end{itemize}
+
+\noindent \textbf{Resources}
+\begin{itemize}
+\item \url{https://www.socialresearchmethods.net/kb/statinf.php}
+\item \url{http://homepage.stat.uiowa.edu/~rdecook/stat6220/Class_notes/simulation_pretest_posttest.pdf}
+\end{itemize}
+
+\bibliographystyle{IEEEbib}
+\bibliography{refs}
+
+\end{document}

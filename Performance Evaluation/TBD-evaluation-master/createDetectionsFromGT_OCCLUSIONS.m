@@ -2,7 +2,8 @@
 clc; clear;
 
 %% PARAMETERS
-baseFolder = 'D:\lab\TBD-evaluation';
+% baseFolder = 'D:\lab\TBD-evaluation';
+baseFolder = pwd;
 datasetName = 'AVG-TownCentre';
 
 N_range = 0 : 0.2 : 1;

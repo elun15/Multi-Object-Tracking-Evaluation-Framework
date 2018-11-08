@@ -1,0 +1,1 @@
+This is just a collection of my summaries and copy-and-paste material from different sources.
