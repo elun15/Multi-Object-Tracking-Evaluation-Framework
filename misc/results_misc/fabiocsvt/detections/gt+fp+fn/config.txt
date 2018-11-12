@@ -1,0 +1,4 @@
+miss-detection probability: 0.3000
+false alarm rate: 0.3000
+max false alarm per frame: 10
+state noise (standard deviation): [0.0000 0.0000]
