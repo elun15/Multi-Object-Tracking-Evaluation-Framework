@@ -40,14 +40,15 @@ end
 
 %% LOAD DATA
 %addpath(genpath('utils'));
-prov_det_data= {};
+det_original_data= {};
 det_data= {};
 for i = 1:numel(datasets_names) %i = dataset
-    
+   
     sequences_names_raw=dir([datasets_path datasets_names{i}]);
     sequences_names={};
     % Remove '.'and '..' hidden directories
     counter_aux=1;
+    
     for k=1:length(sequences_names_raw)
         foldername = sequences_names_raw(k).name;
         if ( (strcmp(foldername, '.' ) == 0) && (strcmp(foldername, '..' ) == 0))
@@ -58,44 +59,26 @@ for i = 1:numel(datasets_names) %i = dataset
     end
     
     for j = 1:numel(sequences_names) %j = sequence
+        
        
         original_file = fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det/det.txt');
-         mkdir(fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det_without_format/'));
+        det_original_data = dlmread(original_file);
         
-        without_format_file = fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det_without_format/det.txt');
-        
-        det_original_data{i,j} = dlmread(original_file);
-        dlmwrite(without_format_file,  det_original_data{i,j});
+        %Check if provided detections are in format MOT16
+        if ((det_original_data(1,8) == -1) && (det_original_data(1,9) == -1))
+             disp(['Formatting ' datasets_names{i} ' ' sequences_names{j}]);
+            mkdir(fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det_without_format/'));
+            without_format_file = fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det_without_format/det.txt');
+            dlmwrite(without_format_file,  det_original_data); %copy original provided detections to new folder
+            new_data = det_original_data;
+            new_data(:,7:8)= 1;
+            new_data= new_data(:,1:9);
+            a=2;
+            dlmwrite(original_file,  new_data); %Overwrite detection file with formatted data
+        else
+             disp(['Already formated ' datasets_names{i} ' ' sequences_names{j}]);
+        end
     end
     
 end
-
-%% FORMAT DETECTION 
-
-
-det_data = {};
-option = 'gt';
-
-for i = 1:numel(datasets_names) %i = dataset
-   
-    for j = 1:numel(sequences_names) %j = sequence
-        index_not_ignored = (gt_data{i,j}(:,7) == 1);
-        det_data{i,j} =  gt_data{i,j}(index_not_ignored,:); %supress non-active gt bboxes
-        det_data{i,j}(:,2) = -1; % suppres id -> -1
-        det_data{i,j} = sortrows(det_data{i,j}); % sort by first column (frame)
-        
-%         img_path = [datasets_path datasets_names{i} '/' sequences_names{j} '/img1/000001.jpg'];
-%         img= imread(img_path);
-%         img2 = insertShape(img, 'Rectangle', det_data{i,j}(1:20,3:6));
-%         imshow(img2);
-%         
-        detections_file = [prov_detections_path datasets_names{i} '/' option '/' sequences_names{j}  '.txt'];
-        dlmwrite(detections_file,  det_data{i,j});
-
-    
-    end
-    
-    
-end
-
 
