@@ -82,7 +82,8 @@ class KalmanBoxTracker(object):
   This class represents the intern<al state of individual tracked objects observed as bbox.
   """
   count = 0
-  def __init__(self,bbox):
+
+  def __init__(self,bbox,flag_new_video):
     """
     Initialises a tracker using initial bounding box.
     """
@@ -97,6 +98,13 @@ class KalmanBoxTracker(object):
     self.kf.Q[-1,-1] *= 0.01
     self.kf.Q[4:,4:] *= 0.01
 
+    self.flag = flag_new_video
+
+    if self.flag is 1:
+        self.flag = 0
+        KalmanBoxTracker.count = 1
+
+
     self.kf.x[:4] = convert_bbox_to_z(bbox)
     self.time_since_update = 0
     self.id = KalmanBoxTracker.count
@@ -106,7 +114,9 @@ class KalmanBoxTracker(object):
     self.hit_streak = 0
     self.age = 0
     self.clase = bbox[5]
-    self.id =-1
+
+
+
 
   def update(self,bbox):
     """
@@ -193,6 +203,7 @@ class Sort(object):
     self.min_hits = min_hits
     self.trackers = []
     self.frame_count = 0
+    self.new_video = 1
 
   def update(self,dets):
     """
@@ -226,9 +237,13 @@ class Sort(object):
 
     #create and initialise new trackers for unmatched detections
     for i in unmatched_dets:
-        trk = KalmanBoxTracker(dets[i,:]) 
+        trk = KalmanBoxTracker(dets[i,:], self.new_video)
+        if trk.flag == 0:
+            self.new_video = 0
+
         self.trackers.append(trk)
     i = len(self.trackers)
+
     for trk in reversed(self.trackers):
         d = trk.get_state()[0]
         clase = trk.get_clase()
@@ -363,7 +378,7 @@ def create_detections(detection_mat, frame_idx, min_height=0):
     # consider only detections in such frame
     for row in detection_mat[mask]:
         row = np.array(row).reshape(1, row.shape[0])
-        bbox, confidence, clase, feature = row[0, 2:6], row[0, 6], row[0, 7], row[0, 10:]
+        bbox, confidence, clase = row[0, 2:6], row[0, 6], row[0, 7] #no features
 
 
         detection_list.append(Detection(bbox, confidence, clase))
@@ -375,7 +390,7 @@ if __name__ == '__main__':
 
   # all train
   args = parse_args()
-  display = True
+  display = False
 
   datasets_path = '../../Datasets/'
 
@@ -400,82 +415,81 @@ if __name__ == '__main__':
   # colours = np.random.rand(32,3) #used only for display
 
 
-  results_path = '../../Results/Tracking/SORT/'
+  results_path = '../../Results/';
+  #tracking_resultTracking/SORT/'
 
   for seq in sequences:
-
-    seq_dets = np.loadtxt('%s/det/det.txt' % (seq), delimiter=',')  # load detections
-    seq_info = gather_sequence_info(seq, seq_dets)
-    name_sequence = seq_info["sequence_name"]
     seq2 = os.path.split(seq)[0]
     name_dataset = os.path.basename(seq2)
-    result_sequence_path = os.path.join(results_path,name_dataset,name_sequence)
-    if not os.path.exists(result_sequence_path): #create folder where the results files will be stored
-      os.makedirs(result_sequence_path)
+    name_sequence = os.path.split(seq)[1]
+    detections_path = os.path.join(results_path, 'Detections',name_dataset, name_sequence)
+    detections = os.listdir(detections_path)
 
-    if  display:
-      visualizer = visualization.Visualization(seq_info, update_ms=5)
-    else:
-      visualizer = None
+    for det in detections:
 
-    mot_tracker = Sort() #create instance of the SORT tracker
+        det_file = os.path.join(detections_path, det, '%s.txt' % name_sequence)
+        seq_dets = np.loadtxt(det_file, delimiter=',')  # load detections
+        #seq_dets = np.loadtxt('%s/det/det.txt' % (seq), delimiter=',')  # load detections
+        seq_info = gather_sequence_info(seq, seq_dets)
 
-    with open('%s/%s_det.txt'%(result_sequence_path,name_sequence),'w') as out_file:
-      print("Processing %s."%(name_sequence))
+        result_tracking_sequence_path = os.path.join(results_path,'Tracking/SORT', name_dataset, name_sequence, det)
+        if not os.path.exists(result_tracking_sequence_path): #create folder where the results files will be stored
+          os.makedirs(result_tracking_sequence_path)
 
-      for frame in range(int(seq_dets[:,0].max())):
+        if  display:
+          visualizer = visualization.Visualization(seq_info, update_ms=5)
+        else:
+          visualizer = None
 
-        frame += 1 #detection and frame numbers begin at 1
+        mot_tracker = Sort() #create instance of the SORT tracker
 
-        dets = seq_dets[seq_dets[:,0]==frame,2:8] # dets en frame 1 ( 4 coords blob + score)
-        dets_xywh = dets.copy()
-        dets[:,2:4] = dets_xywh[:,2:4] + dets[:,0:2] #convert to [x1,y1,w,h] to [x1,y1,x2,y2]
+        with open('%s/%s.txt'%(result_tracking_sequence_path,name_sequence),'w') as out_file:
+          print("Processing %s. %s "%(name_sequence,det))
 
-        total_frames += 1
+          for frame in range(int(seq_dets[:,0].max())):
 
-        start_time = time.time()
-        trackers = mot_tracker.update(dets)
-        cycle_time = time.time() - start_time
-        total_time += cycle_time
+            frame += 1 #detection and frame numbers begin at 1
 
-        for d in trackers:
+            dets = seq_dets[seq_dets[:,0]==frame,2:8] # dets en frame 1 ( 4 coords blob + score)
+            dets_xywh = dets.copy()
+            dets[:,2:4] = dets_xywh[:,2:4] + dets[:,0:2] #convert to [x1,y1,w,h] to [x1,y1,x2,y2]
 
-          print('%d,%d,%.2f,%.2f,%.2f,%.2f,1,%d,-1,-1'%(frame,d[4],d[0],d[1],d[2]-d[0],d[3]-d[1],d[5]),file=out_file)
+            total_frames += 1
 
+            start_time = time.time()
+            trackers = mot_tracker.update(dets) # [bbox id clase]
+            cycle_time = time.time() - start_time
+            total_time += cycle_time
 
+            for d in trackers:
 
-        if visualizer:
-          # Load image and generate detections (bbox, confidence + feaures)
-          detections_list = create_detections(seq_dets, frame)
-
-          trackers_list = []
-          for row in trackers:
-              row = np.array(row).reshape(1, row.shape[0])
-              bbox, clase = row[0, 0:4], row[0, 4]
-              confidence = 1
-              trackers_list.append(Detection(bbox, confidence, clase))
-              mean, covariance = self.kf.initiate(detection.to_xyah())
-              self.tracks.append(Track(0, 0, self._next_id, 4, 400, detection.cls, 1, 0))
+              print('%d,%d,%.2f,%.2f,%.2f,%.2f,1,%d,-1,-1'%(frame,d[4],d[0],d[1],d[2]-d[0],d[3]-d[1],d[5]),file=out_file)
 
 
-          image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)
-          visualizer.set_image(image.copy())
-          visualizer.draw_detections(detections_list)
-          visualizer.draw_trackers(trackers_list)
 
-          # gt = seq_info["groundtruth"]
-          # gt_frame = gt[gt[:, 0] == frame_idx, :]
-          # ids = gt_frame[:, 1]
-          # boxes = gt_frame[:, 2:6]
+            if visualizer:
+              # Load image and generate detections (bbox, confidence + feaures)
+              detections_list = create_detections(seq_dets, frame)
 
-          # vis.draw_groundtruth(ids,boxes)
-          # # cv2.imshow("frame",vis.viewer.image)
-          # # cv2.waitKey()
-          # plt.imshow(vis.viewer.image)
-          # plt.pause(0.001)
-          # plt.show(block=False)
 
-          vis.run()
+              image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)
+              visualizer.set_image(image.copy())
+              visualizer.draw_detections(detections_list)
+              visualizer.draw_trackers(trackers)
+
+              # gt = seq_info["groundtruth"]
+              # gt_frame = gt[gt[:, 0] == frame_idx, :]
+              # ids = gt_frame[:, 1]
+              # boxes = gt_frame[:, 2:6]
+
+              # vis.draw_groundtruth(ids,boxes)
+              # # cv2.imshow("frame",vis.viewer.image)
+              # # cv2.waitKey()
+              # plt.imshow(vis.viewer.image)
+              # plt.pause(0.001)
+              # plt.show(block=False)
+
+              visualizer.run()
 
 
 

@@ -114,8 +114,11 @@ class Visualization(object):
         for track in tracks:
             # if not track.is_confirmed() or track.time_since_update > 0:
             #     continue
-            self.viewer.color = create_unique_color_uchar(track.track_id)
-            self.viewer.rectangle(*track.to_tlwh().astype(np.int), label=str(track.track_id))
+            id = track[4]
+            self.viewer.color = create_unique_color_uchar(id)
+            ret = track[:4].copy()
+            ret[2:] -= ret[:2]
+            self.viewer.rectangle(*ret.astype(np.int), label=str(id))
             # self.viewer.gaussian(track.mean[:2], track.covariance[:2, :2],
             #                      label="%d" % track.track_id)
 

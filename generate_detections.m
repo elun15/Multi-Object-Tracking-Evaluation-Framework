@@ -24,7 +24,7 @@ end
 %% LOAD DATA
 %addpath(genpath('utils'));
 gt_data= {};
-det_data= {};
+det_data= [];
 for i = 1:numel(datasets_names) %i = dataset
     
     sequences_names_raw=dir([datasets_path datasets_names{i}]);
@@ -37,7 +37,6 @@ for i = 1:numel(datasets_names) %i = dataset
             sequences_names{counter_aux} = foldername;
             counter_aux = counter_aux+1;
         end
-        
     end
     
     for j = 1:numel(sequences_names) %j = sequence
@@ -56,29 +55,75 @@ end
 %   1    2   3  4  5  6  7   8          9
 % frame  -1  x  y  w  h  1  type  visibility_ratio
 
-det_data = {};
+det_data = [];
 option = 'gt';
-
-for i = 1:numel(datasets_names) %i = dataset
-   
-    for j = 1:numel(sequences_names) %j = sequence
-        index_not_ignored = (gt_data{i,j}(:,7) == 1);
-        det_data{i,j} =  gt_data{i,j}(index_not_ignored,:); %supress non-active gt bboxes
-        det_data{i,j}(:,2) = -1; % suppres id -> -1
-        det_data{i,j} = sortrows(det_data{i,j}); % sort by first column (frame)
-        
-%         img_path = [datasets_path datasets_names{i} '/' sequences_names{j} '/img1/000001.jpg'];
-%         img= imread(img_path);
-%         img2 = insertShape(img, 'Rectangle', det_data{i,j}(1:20,3:6));
-%         imshow(img2);
-%         
-        detections_file = [detections_path datasets_names{i} '/' option '/' sequences_names{j}  '.txt'];
-        dlmwrite(detections_file,  det_data{i,j});
-
+if strcmp(option, 'gt')
     
+    for i = 1:numel(datasets_names) %i = dataset
+        
+        for j = 1:numel(sequences_names) %j = sequence
+            
+            index_not_ignored = (gt_data{i,j}(:,7) == 1);
+            det_data =  gt_data{i,j}(index_not_ignored,:); %supress non-active gt bboxes
+            det_data(:,2) = -1; % suppres id -> -1
+            det_data(:,9) = -1; % suppres id -> -does not care
+            det_data = sortrows(det_data); % sort by first column (frame)
+            
+            %         img_path = [datasets_path datasets_names{i} '/' sequences_names{j} '/img1/000001.jpg'];
+            %         img= imread(img_path);
+            %         img2 = insertShape(img, 'Rectangle', det_data{i,j}(1:20,3:6));
+            %         imshow(img2);
+            %
+            mkdir([detections_path datasets_names{i} '/' sequences_names{j} '/' option '/']);
+            detections_file = [detections_path datasets_names{i} '/' sequences_names{j} '/' option '/' sequences_names{j}   '.txt'];
+            dlmwrite(detections_file,  det_data);
+            
+            
+        end
+        
+        
     end
     
-    
 end
+%% GENERATE DETECTION FROM GT changing P and R
+P_range = 0.5 : 0.1 : 1;
+R_range = 0.5 : 0.1 : 1;
 
+sigma_1 = 4;                  % variance for FP positions
+sigma_2 = 2;                  % variance for BB sizes
 
+det_data=[];
+for i = 1:numel(datasets_names) %i = dataset
+    
+    for j = 1:numel(sequences_names) %j = sequenceframes = unique(data(:, 1));
+        
+        frames = unique(gt_data{i,j}(:, 1));
+        n_frames = length(frames);
+        
+        index_not_ignored = (gt_data{i,j}(:,7) == 1);
+        det_data =  gt_data{i,j}(index_not_ignored,:); %supress non-active gt bboxes
+        det_data(:,2) = -1; % suppres id -> -1
+        det_data(:,9) = -1; % suppres id -> -does not care
+        det_data = sortrows(det_data); % sort by first column (frame)
+        
+        for p = P_range
+            for r = R_range
+                
+                option = ['p' num2str(p) '_r' num2str(r) '_s' num2str(sigma_1) '_s' num2str(sigma_2)];
+                 
+                
+                data_modified = modify_GT_PR(p,r,det_data,sigma_1,sigma_2); % return: 1 -1 bbox
+                
+                data_modified(:,7) = 1;
+                data_modified(:,8) = 1;
+                data_modified(:,9) = -1;
+                % write detection text file
+                mkdir([detections_path datasets_names{i} '/' sequences_names{j} '/' option '/']);
+                detections_file = [detections_path datasets_names{i} '/' sequences_names{j} '/' option '/' sequences_names{j}   '.txt'];
+                dlmwrite(detections_file, data_modified);
+                
+            end
+        end
+        det_data=[];
+    end
+end

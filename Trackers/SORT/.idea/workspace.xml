@@ -11,38 +11,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MOT.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/MOT.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="285" column="9" selection-start-line="285" selection-start-column="4" selection-end-line="285" selection-end-column="9" />
-              <folding>
-                <element signature="e#27#91#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="sort.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sort.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="108" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="502">
+              <caret line="398" column="68" lean-forward="true" selection-start-line="398" selection-start-column="68" selection-end-line="398" selection-end-column="68" />
               <folding>
                 <element signature="e#770#807#0" expanded="true" />
-                <element signature="e#1170#1604#0" />
-                <element signature="e#1637#2000#0" />
-                <element signature="e#2041#2432#0" />
+                <element signature="e#1226#1660#0" />
+                <element signature="e#1693#2056#0" />
+                <element signature="e#2097#2488#0" />
+                <element signature="e#8341#11219#0" />
+                <element signature="e#14964#15748#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="detection.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/detection.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -50,11 +31,20 @@
       <file leaf-file-name="visualization.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/visualization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="99" column="78" selection-start-line="99" selection-start-column="73" selection-end-line="99" selection-end-column="78" />
+            <state relative-caret-position="1819">
+              <caret line="112" selection-start-line="112" selection-end-line="112" />
               <folding>
                 <element signature="e#27#45#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="track.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/src/prediction/track.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1530">
+              <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -90,20 +80,22 @@
       <find>create</find>
       <find>draw</find>
       <find>track</find>
+      <find>result</find>
       <find>KalmanBoxTracker</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/MOT.py" />
         <option value="$PROJECT_DIR$/utils/detection.py" />
+        <option value="$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/src/prediction/track.py" />
         <option value="$PROJECT_DIR$/utils/visualization.py" />
+        <option value="$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/MOT.py" />
         <option value="$PROJECT_DIR$/sort.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="64" />
     <option name="y" value="41" />
     <option name="width" value="1396" />
@@ -134,7 +126,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/MOT.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -197,18 +189,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14574236" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14574236" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5016376" side_tool="true" visible="true" weight="0.32984293" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32984293" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49836245" weight="0.32984293" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32984293" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49836245" weight="0.313089" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -223,13 +215,9 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sort.py</url>
-          <line>436</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -237,73 +225,187 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="45" />
+      <option name="time" value="99" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>groundtruth_file = os.path.join(sequence_dir, &quot;gt/gt.txt&quot;)</expression-string>
+        <expression-string>display = False</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import cv2
-image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)
-cv2.imshow('figure',image)</expression-string>
+        <expression-string>os.path.join(detections_path,det,'%s.txt'%name_sequence)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import cv2
-image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)
-cv2.imshow(caption,image)</expression-string>
+        <expression-string>os.path.join(detections_path,det)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import cv2
-image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)
-cv2.imshow(image)</expression-string>
+        <expression-string>detections = os.listdir(detections_path)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import cv2
-image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)</expression-string>
+        <expression-string>detections_path = os.path.join(results_path, 'Detections',name_dataset, name_sequence)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)</expression-string>
+        <expression-string>detections_path = os.path.join(results_path, 'Detections',name_dataset, name_sequence ,'/')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>os.path.join(seq,'img1','%06d.jpg'%frame)</expression-string>
+        <expression-string>detections_path = [os.path.join(results_path, 'Detections',name_dataset, name_sequence ,'/')]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>os.path.join(seq,'img1','%05d'%frame)</expression-string>
+        <expression-string>detections_path = [os.path.join(results_path, 'Detections',name_dataset, name_sequence)]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>os.path.join(seq,img1,'%05d'%frame)</expression-string>
+        <expression-string>detections_path=[os.path.join(results_path,name_dataset,name_sequence)]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/sort.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7208">
+          <caret line="424" column="18" lean-forward="true" selection-start-line="424" selection-start-column="18" selection-end-line="424" selection-end-column="18" />
+          <folding>
+            <element signature="e#770#807#0" expanded="true" />
+            <element signature="e#1226#1660#0" />
+            <element signature="e#1693#2056#0" />
+            <element signature="e#2097#2488#0" />
+            <element signature="e#8341#11219#0" />
+            <element signature="e#14964#15748#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/src/prediction/track.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/envs/prueba/lib/python2.7/ntpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sort.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7123">
+          <caret line="419" selection-start-line="419" selection-end-line="419" />
+          <folding>
+            <element signature="e#770#807#0" expanded="true" />
+            <element signature="e#1226#1660#0" />
+            <element signature="e#1693#2056#0" />
+            <element signature="e#2097#2488#0" />
+            <element signature="e#8341#11219#0" />
+            <element signature="e#14964#15748#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1819">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/src/prediction/track.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/envs/prueba/lib/python2.7/ntpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/MOT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4522">
+          <caret line="285" column="9" selection-start-line="285" selection-start-column="4" selection-end-line="285" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1598">
+          <caret line="99" column="78" selection-start-line="99" selection-start-column="73" selection-end-line="99" selection-end-column="78" />
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/envs/prueba/lib/python2.7/ntpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sort.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+          <folding>
+            <element signature="e#770#807#0" expanded="true" />
+            <element signature="e#1226#1660#0" />
+            <element signature="e#1693#2056#0" />
+            <element signature="e#2097#2488#0" />
+            <element signature="e#8341#11219#0" />
+            <element signature="e#14964#15748#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/MOT.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding>
-            <element signature="e#27#91#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -334,9 +436,11 @@ image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)<
           <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
           <folding>
             <element signature="e#770#807#0" expanded="true" />
-            <element signature="e#1170#1604#0" />
-            <element signature="e#1637#2000#0" />
-            <element signature="e#2041#2432#0" />
+            <element signature="e#1226#1660#0" />
+            <element signature="e#1693#2056#0" />
+            <element signature="e#2097#2488#0" />
+            <element signature="e#8341#11219#0" />
+            <element signature="e#14964#15748#0" />
           </folding>
         </state>
       </provider>
@@ -390,13 +494,6 @@ image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)<
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/image_viewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="102" column="21" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/deep_sort_app(copia).py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -404,42 +501,62 @@ image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)<
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/MOT.py">
+    <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/src/prediction/track.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="285" column="9" selection-start-line="285" selection-start-column="4" selection-end-line="285" selection-end-column="9" />
-          <folding>
-            <element signature="e#27#91#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1530">
+          <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/visualization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="99" column="78" selection-start-line="99" selection-start-column="73" selection-end-line="99" selection-end-column="78" />
+        <state relative-caret-position="1819">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
           <folding>
             <element signature="e#27#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utils/image_viewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="294" column="44" selection-start-line="294" selection-start-column="44" selection-end-line="294" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Multiple Object Tracking/MOT-master-elg/MOT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="398" column="32" lean-forward="true" selection-start-line="398" selection-start-column="32" selection-end-line="398" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="1067" selection-start-line="1067" selection-end-line="1067" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils/detection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        <state relative-caret-position="383">
+          <caret line="43" column="77" selection-start-line="43" selection-start-column="77" selection-end-line="43" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sort.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="502">
+          <caret line="398" column="68" lean-forward="true" selection-start-line="398" selection-start-column="68" selection-end-line="398" selection-end-column="68" />
           <folding>
             <element signature="e#770#807#0" expanded="true" />
-            <element signature="e#1170#1604#0" />
-            <element signature="e#1637#2000#0" />
-            <element signature="e#2041#2432#0" />
+            <element signature="e#1226#1660#0" />
+            <element signature="e#1693#2056#0" />
+            <element signature="e#2097#2488#0" />
+            <element signature="e#8341#11219#0" />
+            <element signature="e#14964#15748#0" />
           </folding>
         </state>
       </provider>
