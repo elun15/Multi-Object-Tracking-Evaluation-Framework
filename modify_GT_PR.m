@@ -9,7 +9,7 @@ FN = (1 - r);
 
 final_data = [];
 for f = 1 : n_frames
-    tfd = data(data(:, 1) == frames(f), 1:6);       % this frame data
+    tfd = data(data(:, 1) == frames(f), 1:7);       % this frame data
     n_people = size(tfd, 1);
     
     %% ADD FP
@@ -20,10 +20,10 @@ for f = 1 : n_frames
     for i = 1 : fp_n
         new_dim = tfd(fp_idx(i), 5:6)./2 + rand*tfd(fp_idx(i), 5:6);
         new_pos = tfd(fp_idx(i), 3:4) + randn(1, 2)*sigma_1^2 - (new_dim-tfd(fp_idx(i), 5:6))./2;
-        false_positives(i, :) = [frames(f) -1 new_pos new_dim];
+        false_positives(i, :) = [frames(f) -1 new_pos new_dim tfd(fp_idx(i), 7)];
     end
     
-    %% MODIFY BB SIZE
+    %% MODIFY BB SIZE OPTIONAL/COMMENT
     for i = 1 : size(tfd, 1)
         bb_mod = randn(1, 2)*sigma_2^2;
         tfd(i, 5:6) = tfd(i, 5:6) + bb_mod;
