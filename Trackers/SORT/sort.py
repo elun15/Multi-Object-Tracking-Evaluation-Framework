@@ -261,6 +261,8 @@ def parse_args():
     """Parse input arguments."""
     parser = argparse.ArgumentParser(description='SORT demo')
     parser.add_argument('--display', dest='display', help='Display online tracker output (slow) [False]',action='store_true')
+    parser.add_argument('--input_sequence',type=str)
+    parser.add_argument('--detections', type=str)
     args = parser.parse_args()
     return args
 
@@ -391,23 +393,37 @@ if __name__ == '__main__':
   # all train
   args = parse_args()
   display = False
-
-  datasets_path = '../../Datasets/'
-
-  datasets = os.listdir(datasets_path)
-  # whole list of image files names
-  datasets_dir = [os.path.join(datasets_path, f)  for f in datasets]
-  list_datasets = [(datasets_dir[i]) for i, j in enumerate(datasets_dir)]
-  list_sequences = [(os.listdir(j)) for i, j in enumerate(datasets_dir)]
-
-  #sequences = [item for sublist in sequences_list for item in sublist]
-  #import itertools
+  if args.display:
+      display = True
 
   sequences = []
-  for i,j in enumerate(list_sequences):
-  # do something with each list item
-    for k,l in enumerate(j):
-      sequences.append(os.path.join(list_datasets[i],j[k]))
+
+
+  if args.input_sequence is None:
+
+      datasets_path = '../../Datasets/'
+
+      datasets = os.listdir(datasets_path)
+      # whole list of image files names
+      datasets_dir = [os.path.join(datasets_path, f)  for f in datasets]
+      list_datasets = [(datasets_dir[i]) for i, j in enumerate(datasets_dir)]
+      list_sequences = [(os.listdir(j)) for i, j in enumerate(datasets_dir)]
+
+      #sequences = [item for sublist in sequences_list for item in sublist]
+      #import itertools
+
+      for i,j in enumerate(list_sequences):
+      # do something with each list item
+        for k,l in enumerate(j):
+          sequences.append(os.path.join(list_datasets[i],j[k]))
+
+
+
+  else:
+      sequences.append(args.input_sequence)
+
+  results_path = '../../Results/';
+  # tracking_resultTracking/SORT/'
 
   # phase = 'train'
   total_time = 0.0
@@ -415,15 +431,18 @@ if __name__ == '__main__':
   # colours = np.random.rand(32,3) #used only for display
 
 
-  results_path = '../../Results/';
-  #tracking_resultTracking/SORT/'
-
   for seq in sequences:
     seq2 = os.path.split(seq)[0]
     name_dataset = os.path.basename(seq2)
     name_sequence = os.path.split(seq)[1]
-    detections_path = os.path.join(results_path, 'Detections',name_dataset, name_sequence)
-    detections = os.listdir(detections_path)
+
+    detections = []
+    detections_path = os.path.join(results_path, 'Detections', name_dataset, name_sequence)
+
+    if args.detections is None:
+        detections = os.listdir(detections_path)
+    else:
+        detections.append(args.detections)
 
     for det in detections:
 
@@ -466,11 +485,9 @@ if __name__ == '__main__':
               print('%d,%d,%.2f,%.2f,%.2f,%.2f,1,%d,-1,-1'%(frame,d[4],d[0],d[1],d[2]-d[0],d[3]-d[1],d[5]),file=out_file)
 
 
-
             if visualizer:
               # Load image and generate detections (bbox, confidence + feaures)
               detections_list = create_detections(seq_dets, frame)
-
 
               image = cv2.imread(os.path.join(seq,'img1','%06d.jpg'%frame), cv2.IMREAD_COLOR)
               visualizer.set_image(image.copy())
