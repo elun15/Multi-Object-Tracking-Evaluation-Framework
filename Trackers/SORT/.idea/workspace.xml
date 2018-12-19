@@ -3,18 +3,89 @@
   <component name="ChangeListManager">
     <list default="true" id="99976d1b-2b5d-49a9-9091-de53dfe891de" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="SORT" />
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sort.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-496">
+              <caret line="264" column="37" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="37" />
+              <folding>
+                <element signature="e#770#807#0" expanded="true" />
+                <element signature="e#1226#1660#0" />
+                <element signature="e#1693#2056#0" />
+                <element signature="e#2097#2488#0" />
+                <element signature="e#8444#11322#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda3/envs/prueba/lib/python2.7/gettext.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9600">
+              <caret line="641" selection-start-line="641" selection-end-line="641" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/visualization.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1605">
+              <caret line="112" selection-start-line="112" selection-end-line="112" />
+              <folding>
+                <element signature="e#27#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>enu</find>
+      <find>exi</find>
+      <find>convert_bbox_to_z</find>
+      <find>convert_</find>
+      <find>to_</find>
+      <find>to_tlwh</find>
+      <find>_caption</find>
+      <find>vis</find>
+      <find>visualize</find>
+      <find>gather</find>
+      <find>name</find>
+      <find>seq_in</find>
+      <find>visualiz</find>
+      <find>total_frames</find>
+      <find>dra</find>
+      <find>create</find>
+      <find>draw</find>
+      <find>track</find>
+      <find>result</find>
+      <find>KalmanBoxTracker</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/utils/detection.py" />
+        <option value="$USER_HOME$/Multiple Object Tracking/MOT-master-elg/src/prediction/track.py" />
+        <option value="$PROJECT_DIR$/utils/visualization.py" />
+        <option value="$USER_HOME$/Multiple Object Tracking/MOT-master-elg/MOT.py" />
         <option value="$PROJECT_DIR$/sort.py" />
       </list>
     </option>
@@ -25,28 +96,34 @@
     <option name="width" value="1396" />
     <option name="height" value="1007" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="sort-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sort-master" type="462c0819:PsiDirectoryNode" />
+              <item name="SORT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SORT" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SORT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SORT" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Datasets/MOT16_train/MOT16-02" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -61,7 +138,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="sort" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="sort" type="PythonConfigurationType" factoryName="Python">
       <module name="sort-master" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -74,16 +151,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sort.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="--display --input_sequence $PROJECT_DIR$/../../Datasets/MOT16_train/MOT16-02" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.sort" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -108,45 +183,43 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992" visible="true" weight="0.14549288" />
+      <window_info id="Structure" order="1" sideWeight="0.5008" side_tool="true" weight="0.14549288" />
+      <window_info id="Favorites" order="2" sideWeight="0.5008" side_tool="true" weight="0.14549288" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" weight="0.32984293" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32984293" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49762782" weight="0.32939914" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.46916184" weight="0.31223175" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49973643" weight="0.32939914" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49920928" weight="0.32939914" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49973643" weight="0.32939914" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5308382" side_tool="true" visible="true" weight="0.31223175" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sort.py</url>
-          <line>280</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sort.py</url>
-          <line>305</line>
-          <option name="timeStamp" value="6" />
+          <line>401</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -156,27 +229,110 @@
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
+      <expression>
+        <expression-string>os.path.join(detections_path,det,'%s.txt'%name_sequence)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>os.path.join(detections_path,det)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>detections = os.listdir(detections_path)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>detections_path = os.path.join(results_path, 'Detections',name_dataset, name_sequence)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>detections_path = os.path.join(results_path, 'Detections',name_dataset, name_sequence ,'/')</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>detections_path = [os.path.join(results_path, 'Detections',name_dataset, name_sequence ,'/')]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>detections_path = [os.path.join(results_path, 'Detections',name_dataset, name_sequence)]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>detections_path=[os.path.join(results_path,name_dataset,name_sequence)]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/anaconda2/envs/prueba/lib/python2.7/site-packages/sklearn/utils/linear_assignment_.py" />
+    <entry file="file://$USER_HOME$/anaconda2/envs/prueba/lib/python2.7/ntpath.py" />
+    <entry file="file://$USER_HOME$/Multiple Object Tracking/MOT-master-elg/deep_sort_app(copia).py" />
+    <entry file="file://$USER_HOME$/Multiple Object Tracking/MOT-master-elg/src/prediction/track.py" />
+    <entry file="file://$PROJECT_DIR$/utils/image_viewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="294" column="44" selection-start-line="294" selection-start-column="44" selection-end-line="294" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Multiple Object Tracking/MOT-master-elg/MOT.py" />
+    <entry file="file://$PROJECT_DIR$/utils/detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="43" column="77" selection-start-line="43" selection-start-column="77" selection-end-line="43" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3576">
+          <caret line="876" column="28" lean-forward="true" selection-start-line="876" selection-start-column="28" selection-end-line="876" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/prueba/lib/python2.7/argparse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="1707" selection-start-line="1707" selection-end-line="1707" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sort.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2803">
-          <caret line="105" column="16" lean-forward="true" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+        <state relative-caret-position="-496">
+          <caret line="264" column="37" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="37" />
           <folding>
             <element signature="e#770#807#0" expanded="true" />
-            <element signature="e#1164#1598#0" />
-            <element signature="e#1631#1994#0" />
-            <element signature="e#2035#2426#0" />
-            <element signature="e#7727#7990#0" />
+            <element signature="e#1226#1660#0" />
+            <element signature="e#1693#2056#0" />
+            <element signature="e#2097#2488#0" />
+            <element signature="e#8444#11322#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda2/envs/prueba/lib/python2.7/site-packages/sklearn/utils/linear_assignment_.py">
+    <entry file="file://$USER_HOME$/anaconda3/envs/prueba/lib/python2.7/gettext.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        <state relative-caret-position="9600">
+          <caret line="641" selection-start-line="641" selection-end-line="641" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
