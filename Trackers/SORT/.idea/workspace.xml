@@ -16,15 +16,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sort.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="354" column="19" lean-forward="true" selection-start-line="354" selection-start-column="19" selection-end-line="354" selection-end-column="19" />
+            <state relative-caret-position="-496">
+              <caret line="264" column="37" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="37" />
               <folding>
                 <element signature="e#770#807#0" expanded="true" />
                 <element signature="e#1226#1660#0" />
                 <element signature="e#1693#2056#0" />
                 <element signature="e#2097#2488#0" />
-                <element signature="e#8341#11219#0" />
-                <element signature="e#12693#13322#0" />
+                <element signature="e#8444#11322#0" />
               </folding>
             </state>
           </provider>
@@ -33,7 +32,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/prueba/lib/python2.7/gettext.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="9600">
               <caret line="641" selection-start-line="641" selection-end-line="641" />
             </state>
           </provider>
@@ -103,6 +102,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,7 +119,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -152,7 +151,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sort.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="--display --input_sequence $PROJECT_DIR$/../../Datasets/MOT16_train/MOT16-02" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -188,18 +187,18 @@
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992" visible="true" weight="0.14549288" />
       <window_info id="Structure" order="1" sideWeight="0.5008" side_tool="true" weight="0.14549288" />
-      <window_info id="Favorites" order="2" sideWeight="0.5008" side_tool="true" visible="true" weight="0.14549288" />
+      <window_info id="Favorites" order="2" sideWeight="0.5008" side_tool="true" weight="0.14549288" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49762782" weight="0.32939914" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.46968898" weight="0.31223175" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.46916184" weight="0.31223175" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49973643" weight="0.32939914" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49920928" weight="0.32939914" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49973643" weight="0.32939914" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50237215" side_tool="true" visible="true" weight="0.32939914" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5308382" side_tool="true" visible="true" weight="0.31223175" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -207,6 +206,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sort.py</url>
+          <line>401</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -285,27 +291,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/visualization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-          <folding>
-            <element signature="e#27#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3576">
           <caret line="876" column="28" lean-forward="true" selection-start-line="876" selection-start-column="28" selection-end-line="876" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/prueba/lib/python2.7/gettext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="641" selection-start-line="641" selection-end-line="641" />
         </state>
       </provider>
     </entry>
@@ -318,15 +307,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sort.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="354" column="19" lean-forward="true" selection-start-line="354" selection-start-column="19" selection-end-line="354" selection-end-column="19" />
+        <state relative-caret-position="-496">
+          <caret line="264" column="37" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="37" />
           <folding>
             <element signature="e#770#807#0" expanded="true" />
             <element signature="e#1226#1660#0" />
             <element signature="e#1693#2056#0" />
             <element signature="e#2097#2488#0" />
-            <element signature="e#8341#11219#0" />
-            <element signature="e#12693#13322#0" />
+            <element signature="e#8444#11322#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/prueba/lib/python2.7/gettext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9600">
+          <caret line="641" selection-start-line="641" selection-end-line="641" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
