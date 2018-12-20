@@ -45,7 +45,19 @@ num_sequences = num_sequences -1;
 %% SELECTED TRACKERS AND METRICS
 
 list_trackers = {'SORT'};
-list_detections = {'gt', 'p0.5_r0.5_s4_s2'};
+list_detections = {'gt'};
+
+P_range = [0.5 0.9];
+R_range = [0.5 0.9];
+sigma_1 = 4;                  % variance for FP positions
+sigma_2 = 2;                  % variance for BB sizes
+
+for p = P_range
+    for r = R_range
+        list_detections{end+1} = sprintf('p%02d_r%02d_s%d_s%d',10*p,10*r,sigma_1,sigma_2);
+    end
+end
+
 
 
 % PERFORM TRACKING
@@ -60,7 +72,7 @@ for t = 1:numel(list_trackers)
                 
                 sequences(s).results_tracking_path = fullfile(results_tracking_path,'SORT', sequences(s).dataset_name, sequences(s).name,list_detections{d});
                 
-                out = run_SORT(sequences(s),list_detections{d});
+                eval(['sequences(s).results_tracking_' list_detections{d} '= run_SORT(sequences(s),list_detections{d});']);
                 
             end
             

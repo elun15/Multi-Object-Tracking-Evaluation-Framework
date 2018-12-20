@@ -88,13 +88,15 @@ end
 %% GENERATE DETECTION FROM GT changing P and R
 P_range = 0.5 : 0.1 : 1;
 R_range = 0.5 : 0.1 : 1;
+P_range = [0.5 0.9];
+R_range = [0.5 0.9];
 
 sigma_1 = 4;                  % variance for FP positions
 sigma_2 = 2;                  % variance for BB sizes
 
 det_data=[];
 for i = 1:numel(datasets_names) %i = dataset
-        for j = 1:numel(sequences_names) %j = sequenceframes = unique(data(:, 1));
+    for j = 1:numel(sequences_names) %j = sequenceframes = unique(data(:, 1));
         
         frames = unique(gt_data{i,j}(:, 1));
         n_frames = length(frames);
@@ -108,8 +110,8 @@ for i = 1:numel(datasets_names) %i = dataset
         for p = P_range
             for r = R_range
                 
-                option = ['p' num2str(p) '_r' num2str(r) '_s' num2str(sigma_1) '_s' num2str(sigma_2)];
-                                 
+                option = sprintf('p%02d_r%02d_s%d_s%d',10*p,10*r,sigma_1,sigma_2)
+                
                 data_modified = modify_GT_PR(p,r,det_data,sigma_1,sigma_2); % return: 1 -1 bbox
                 
                 data_modified(:,7) = 1;
