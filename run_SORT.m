@@ -1,4 +1,4 @@
-function [output] = run_SORT(sequence,det,result)
+function [output] = run_SORT(sequence,det)
 
 command_gotodir = 'cd Trackers/SORT/';
 command_conda =  'source /home/vpu/anaconda3/bin/activate prueba';
@@ -21,7 +21,7 @@ fclose(fid);
 [status,cmdout] = system('chmod +x run_SORT.sh');
 [status,cmdout] = system('bash ./run_SORT.sh');
 
+output = importdata(fullfile(sequence.results_tracking_path,[sequence.name '.txt']));
 
-output = 1;
 end
 
