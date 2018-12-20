@@ -82,7 +82,8 @@ end
 
 
 
-save('sequences.mat','sequences')
+
+
 
 
 
