@@ -69,9 +69,9 @@ for t = 1:numel(list_trackers)
             
             if (strcmp(list_trackers{t},'SORT'))
                 
-                sequences(s).results_tracking_path = fullfile(results_tracking_path,'SORT', sequences(s).dataset_name, sequences(s).name,list_detections{d});
+                eval([ 'sequences(s).results_tracking_paths.' list_detections{d} '= fullfile(results_tracking_path,list_trackers{t}, sequences(s).dataset_name, sequences(s).name,list_detections{d});']);
                 
-                eval(['sequences(s).results_tracking_' list_detections{d} '= run_SORT(sequences(s),list_detections{d});']);
+                eval(['sequences(s).results_tracking.' list_detections{d} '= run_SORT(sequences(s),list_detections{d});']);
                 
             end
             

@@ -1,13 +1,13 @@
-%% INITIALIZE
-clc; clear; close all force;
+function [] = generate_detections(a)
 
-%% PATH and PARAMETERS
+%PATH and PARAMETERS
 
 baseFolder = pwd;
 detections_path = [baseFolder '/Results/Detections/'];
 datasets_path = [baseFolder '/Datasets/'];
 
 [datasets_names, datasets_paths] = get_folders(datasets_path);
+
 
 
 %% LOAD DATA
@@ -18,14 +18,14 @@ sequences_names={};
 for i = 1:numel(datasets_names) %i = dataset
     
     sequences_names_raw=dir([datasets_path datasets_names{i}]);
-   
+    
     % Remove '.'and '..' hidden directories
- 
+    
     for k=1:length(sequences_names_raw)
         foldername = sequences_names_raw(k).name;
         if ( (strcmp(foldername, '.' ) == 0) && (strcmp(foldername, '..' ) == 0))
             sequences_names{end+1} = foldername;
-                   end
+        end
     end
     
     for j = 1:numel(sequences_names) %j = sequence
@@ -115,4 +115,5 @@ for i = 1:numel(datasets_names) %i = dataset
         end
         det_data=[];
     end
+end
 end

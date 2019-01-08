@@ -21,7 +21,7 @@ fclose(fid);
 [status,cmdout] = system('chmod +x run_SORT.sh');
 [status,cmdout] = system('bash ./run_SORT.sh');
 
-output = importdata(fullfile(sequence.results_tracking_path,[sequence.name '.txt']));
+eval(['output = importdata(fullfile([sequence.results_tracking_paths.' det '],[sequence.name ''.txt'']));']);
 
 end
 

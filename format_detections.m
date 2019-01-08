@@ -14,7 +14,7 @@
 
 
 %%INITIALIZE
-clc; clear; close all force;
+% clc; clear; close all force;
 
 %% PATH and PARAMETERS
 
