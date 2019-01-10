@@ -1,4 +1,4 @@
-function [] = generate_detections(a)
+function [] = generate_detections()
 
 %PATH and PARAMETERS
 
@@ -20,7 +20,6 @@ for i = 1:numel(datasets_names) %i = dataset
     sequences_names_raw=dir([datasets_path datasets_names{i}]);
     
     % Remove '.'and '..' hidden directories
-    
     for k=1:length(sequences_names_raw)
         foldername = sequences_names_raw(k).name;
         if ( (strcmp(foldername, '.' ) == 0) && (strcmp(foldername, '..' ) == 0))
@@ -99,10 +98,8 @@ for i = 1:numel(datasets_names) %i = dataset
         for p = P_range
             for r = R_range
                 
-                option = sprintf('p%02d_r%02d_s%d_s%d',10*p,10*r,sigma_1,sigma_2)
-                
+               option = sprintf('p%02d_r%02d_s%d_s%d',10*p,10*r,sigma_1,sigma_2)
                 data_modified = modify_GT_PR(p,r,det_data,sigma_1,sigma_2); % return: 1 -1 bbox
-                
                 data_modified(:,7) = 1;
                 data_modified(:,8) = 1;
                 data_modified(:,9) = -1;

@@ -1,13 +1,13 @@
 %
 % Script to format provided MOT16/17 detections files to the desired format
 
-% ------- Dets original format ----------------------------
+% ------- Dets MOT16/17 format ----------------------------
 %   1    2   3  4  5  6    7     8   9  10
 % frame  -1  x  y  w  h  score  -1  -1  -1
 
 % ------- Dets output format ----------------------------
-%   1    2   3  4  5  6      7   8      9
-% frame  -1  x  y  w  h  active class  -1
+%   1    2   3  4  5  6      7   8      9    10
+% frame  -1  x  y  w  h  active class  -1    score  (anaDIR)
 
 % active = 1
 % class = 1 (always people in MOT16/17)

@@ -8,7 +8,6 @@
 clc; clear; close all force;
 
 
-
 sequences = struct;
 
 %% PATH and PARAMETERS
@@ -23,24 +22,30 @@ detections_path = fullfile(pwd, 'Results', 'Detections');
 [datasets_names, datasets_paths] = get_folders([fullfile(pwd, '/Datasets/')]);
 
 % SEQUENCES
-num_sequences=1;
-for i = 1:numel(datasets_paths)
+num_sequences=0;
+num_datasets=0;
+
+for i = 1:numel(datasets_names)
     
+    eval(['sequences.' datasets_names{i} '= struct ;']);
     [sequences_names, sequences_paths] = get_folders(datasets_paths{i});
+    num_datasets = num_datasets+1;
     
-    for j = 1:numel(sequences_paths)
-        sequences(num_sequences).name = sequences_names{j};
-        sequences(num_sequences).path = sequences_paths{j};
-        sequences(num_sequences).dataset_name = datasets_names{i};
-        sequences(num_sequences).dataset_path = datasets_paths{i};
-        sequences(num_sequences).detections_path = fullfile(detections_path,datasets_names{i},sequences_names{j});
-        
+    for j = 1:numel(sequences_names)
         num_sequences = num_sequences + 1;
+        
+        eval(['sequences.' datasets_names{i} '(j).name = sequences_names{j} ;']);
+        eval(['sequences.' datasets_names{i} '(j).path = sequences_paths{j} ;']);
+        eval(['sequences.' datasets_names{i} '(j).dataset_path = datasets_paths{i} ;']);
+        eval(['sequences.' datasets_names{i} '(j).detections_path = fullfile(detections_path,datasets_names{i},sequences_names{j}) ;']);
+        
     end
     
 end
-num_sequences = num_sequences -1;
 
+
+
+save('sequences.mat','sequences');
 
 %% SELECTED TRACKERS AND METRICS
 
@@ -58,31 +63,47 @@ for p = P_range
     end
 end
 
+%comprobar que existe
+
 
 % PERFORM TRACKING
+results_tracking = struct;
 
-for t = 1:numel(list_trackers)
-    for s=1:num_sequences
-        for d=1:numel(list_detections)
+for d=1:numel(list_detections) % "gt", "p0.5" , "r0.5"
+    
+    for t = 1:numel(list_trackers)
+        
+        for dat = 1:(num_datasets)
             
-            disp(['Running ' list_trackers{t} ' tracker. ' sequences(s).name ' sequence with ' list_detections{d} ]);
+            results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})=struct;
             
-            if (strcmp(list_trackers{t},'SORT'))
+            for s = 1: numel(eval(['sequences.' datasets_names{dat} ' ;']))
                 
-                eval([ 'sequences(s).results_tracking_paths.' list_detections{d} '= fullfile(results_tracking_path,list_trackers{t}, sequences(s).dataset_name, sequences(s).name,list_detections{d});']);
+                results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).name = sequences.(datasets_names{dat})(s).name;
                 
-                eval(['sequences(s).results_tracking.' list_detections{d} '= run_SORT(sequences(s),list_detections{d});']);
+                disp(['Running ' list_trackers{t} ' tracker. ' sequences.(datasets_names{dat})(s).name ' sequence with ' list_detections{d} ]);
                 
+                if (strcmp(list_trackers{t},'SORT'))
+                    
+                    sequences.(datasets_names{dat})(s).results_tracking_paths  =   fullfile(results_tracking_path,list_trackers{t}, datasets_names{dat}, sequences.(datasets_names{dat})(s).name , list_detections{d});
+                    
+                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path =  sequences.(datasets_names{dat})(s).results_tracking_paths ;
+                    
+                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = run_SORT(sequences.(datasets_names{dat})(s) ,list_detections{d});
+                    
+                end
             end
-            
         end
         
+        
     end
+    
+    
 end
 
 
 
-save('sequences.mat','sequences')
+save('results_tracking.mat','results_tracking')
 
 
 
