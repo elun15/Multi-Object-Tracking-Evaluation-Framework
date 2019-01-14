@@ -43,8 +43,6 @@ for i = 1:numel(datasets_names)
     
 end
 
-
-
 save('sequences.mat','sequences');
 
 %% SELECTED TRACKERS AND METRICS
@@ -59,7 +57,8 @@ sigma_2 = 2;                  % variance for BB sizes
 
 for p = P_range
     for r = R_range
-        list_detections{end+1} = sprintf('p%02d_r%02d_s%d_s%d',10*p,10*r,sigma_1,sigma_2);
+        list_detections{end+1} = sprintf('p%03d_r%03d_s%02d_s%02d',100*p,100*r,sigma_1,sigma_2);
+       
     end
 end
 
@@ -81,8 +80,8 @@ for d=1:numel(list_detections) % "gt", "p0.5" , "r0.5"
                 
                 results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).name = sequences.(datasets_names{dat})(s).name;
                 
-                disp(['Running ' list_trackers{t} ' tracker. ' sequences.(datasets_names{dat})(s).name ' sequence with ' list_detections{d} ]);
-                
+                disp(['Running ' list_trackers{t} ' tracker. ' sequences.(datasets_names{dat})(s).name ' sequence with ' list_detections{d} ' detections.']);
+                tic;
                 if (strcmp(list_trackers{t},'SORT'))
                     
                     sequences.(datasets_names{dat})(s).results_tracking_paths  =   fullfile(results_tracking_path,list_trackers{t}, datasets_names{dat}, sequences.(datasets_names{dat})(s).name , list_detections{d});
@@ -92,6 +91,8 @@ for d=1:numel(list_detections) % "gt", "p0.5" , "r0.5"
                     results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = run_SORT(sequences.(datasets_names{dat})(s) ,list_detections{d});
                     
                 end
+                toc;
+                
             end
         end
         

@@ -56,4 +56,8 @@ MOTA = (1-(missed+falsepositives+idswitches)/sumg)*100;
 recall = Nc/sumg*100;
 precision = Nc/(falsepositives+Nc)*100;
 
-metsBenchmark = [IDF1, IDP, IDR, recall, precision, FAR, Ngt, MT, PT, ML, falsepositives, missed, idswitches, FRA, MOTA, MOTP, MOTAL];
+metsBenchmark.names= {'IFD1','IDP','IDR','Recall','Precision','False Alarm Rate', ...
+    'GT Tracks','Mostly Tracked','Partially Tracked','Mostly Lost', ...
+    'False Positives', 'False Negatives', 'ID Switches', 'Fragmentations', ...
+    'MOTA','MOTP', 'MOTA Log'};
+metsBenchmark.m = [IDF1, IDP, IDR, recall, precision, FAR, Ngt, MT, PT, ML, falsepositives, missed, idswitches, FRA, MOTA, MOTP, MOTAL];

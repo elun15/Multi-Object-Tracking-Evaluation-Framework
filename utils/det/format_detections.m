@@ -67,13 +67,13 @@ for i = 1:numel(datasets_names) %i = dataset
         %Check if provided detections are in format MOT16
         if ((det_original_data(1,8) == -1) && (det_original_data(1,9) == -1))
              disp(['Formatting ' datasets_names{i} ' ' sequences_names{j}]);
-            mkdir(fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det_without_format/'));
-            without_format_file = fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det_without_format/det.txt');
+            mkdir(fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det_original/'));
+            without_format_file = fullfile(datasets_path, datasets_names{i}, sequences_names{j},'/det_original/det.txt');
             dlmwrite(without_format_file,  det_original_data); %copy original provided detections to new folder
             new_data = det_original_data;
             new_data(:,7:8)= 1;
             new_data= new_data(:,1:9);
-            a=2;
+           
             dlmwrite(original_file,  new_data); %Overwrite detection file with formatted data
         else
              disp(['Already formated ' datasets_names{i} ' ' sequences_names{j}]);
