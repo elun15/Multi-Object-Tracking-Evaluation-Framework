@@ -1,13 +1,13 @@
 %% Run_trackers
 %
+
 %   Author : Elena luna
 %   VPULab - EPS - UAM
 %
 
 %% INITIALIZE
 clc; clear; close all force;
-
-
+warning off;
 sequences = struct;
 
 %% PATH and PARAMETERS
@@ -47,7 +47,8 @@ save('sequences.mat','sequences');
 
 %% SELECTED TRACKERS AND METRICS
 
-list_trackers = {'SORT'};
+list_trackers = {'SORT','MATLAB'};
+% list_trackers = {'SORT'};
 list_detections = {'gt'};
 
 P_range = [0.5 0.9];
@@ -58,17 +59,18 @@ sigma_2 = 2;                  % variance for BB sizes
 for p = P_range
     for r = R_range
         list_detections{end+1} = sprintf('p%03d_r%03d_s%02d_s%02d',100*p,100*r,sigma_1,sigma_2);
-       
+        
     end
 end
 
-%comprobar que existe
+%TO DO: comprobar que existen las detecciones seleccionadas, si no, mostrar
+%un mensaje y seguir
 
 
 % PERFORM TRACKING
 results_tracking = struct;
 
-for d=1:numel(list_detections) % "gt", "p0.5" , "r0.5"
+for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
     
     for t = 1:numel(list_trackers)
         
@@ -81,30 +83,34 @@ for d=1:numel(list_detections) % "gt", "p0.5" , "r0.5"
                 results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).name = sequences.(datasets_names{dat})(s).name;
                 
                 disp(['Running ' list_trackers{t} ' tracker. ' sequences.(datasets_names{dat})(s).name ' sequence with ' list_detections{d} ' detections.']);
+                
+                sequences.(datasets_names{dat})(s).results_tracking_paths  =   fullfile(results_tracking_path,list_trackers{t}, datasets_names{dat}, sequences.(datasets_names{dat})(s).name , list_detections{d});
+                results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path =  sequences.(datasets_names{dat})(s).results_tracking_paths ;
+                
                 tic;
                 if (strcmp(list_trackers{t},'SORT'))
                     
-                    sequences.(datasets_names{dat})(s).results_tracking_paths  =   fullfile(results_tracking_path,list_trackers{t}, datasets_names{dat}, sequences.(datasets_names{dat})(s).name , list_detections{d});
-                    
-                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path =  sequences.(datasets_names{dat})(s).results_tracking_paths ;
-                    
                     results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = run_SORT(sequences.(datasets_names{dat})(s) ,list_detections{d});
+                end
+                if (strcmp(list_trackers{t},'MATLAB'))
+                    
+                    result_matrix = MotionBasedMultiObjectTrackingExample(sequences.(datasets_names{dat})(s),list_detections{d});
+                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = result_matrix;
+                    path=results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path;
+                    
+                    if not(isdir(path))
+                        mkdir(path);
+                    end
+                    
+                    dlmwrite(fullfile(path,[sequences.(datasets_names{dat})(s).name '.txt']),result_matrix);
                     
                 end
+                               
                 toc;
                 
             end
         end
-        
-        
     end
-    
-    
 end
-
-
-
 save('results_tracking.mat','results_tracking')
-
-
 

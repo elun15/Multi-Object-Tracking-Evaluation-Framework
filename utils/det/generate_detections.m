@@ -8,7 +8,7 @@ datasets_path = [baseFolder '/Datasets/'];
 
 [datasets_names, datasets_paths] = get_folders(datasets_path);
 
-
+ 
 %% LOAD DATA
 %addpath(genpath('utils'));
 gt_data= {};
@@ -52,11 +52,11 @@ if strcmp(option, 'gt')
                 det_data(:,9) = -1; % suppres id -> -does not care
                 det_data = sortrows(det_data); % sort by first column (frame)
                 
-                %         img_path = [datasets_path datasets_names{i} '/' sequences_names{j} '/img1/000001.jpg'];
-                %         img= imread(img_path);
-                %         img2 = insertShape(img, 'Rectangle', det_data{i,j}(1:20,3:6));
-                %         imshow(img2);
-                %
+                        img_path = [sequences_paths{s} '/img1/000001.jpg'];
+                        img= imread(img_path);
+                        img2 = insertShape(img, 'Rectangle', det_data{i,j}(1:20,3:6));
+                        imshow(img2);
+                
                 mkdir([detections_path datasets_names{d} '/' sequences_names{s} '/' option '/']);
                 detections_file = [detections_path datasets_names{d} '/' sequences_names{s} '/' option '/' sequences_names{s}   '.txt'];
                 dlmwrite(detections_file,  det_data);
