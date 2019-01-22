@@ -73,8 +73,8 @@ for f = 1:numel(names_frames)
     updateUnassignedTracks();
     deleteLostTracks();
     createNewTracks();
-    res_data = saveResults(res_data,f);
-    %displayTrackingResults();
+    %res_data = saveResults(res_data,f);
+    displayTrackingResults();
 end
 
 
@@ -217,7 +217,7 @@ end
 % assigned tracks and detections in its two columns. It also returns the
 % indices of tracks and detections that remained unassigned.
 
-    function [assignments, unassignedTracks, unassignedDetections] =     detectionToTrackAssignment()
+    function [assignments, unassignedTracks, unassignedDetections] =  detectionToTrackAssignment()
         
         nTracks = length(tracks);
         nDetections = size(centroids, 1);
@@ -288,7 +288,7 @@ end
             return;
         end
         
-        invisibleForTooLong = 20;
+        invisibleForTooLong = 10;
         ageThreshold = 8;
         
         % Compute the fraction of the track's age for which it was visible.
