@@ -1,5 +1,5 @@
 function perClassMets = classEval(gtsortdata, ressortdata, evalClassSet, sequenceName)
-
+% llamada a CLEAR dentro de toolkit
 threshold = 0.5;
 world = 0;
 
