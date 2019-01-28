@@ -1,4 +1,4 @@
-function [] = displayTracking(sequences, results_tracking,detection, dataset, sequence, tracker )
+lfunction [] = displayTracking(sequences, results_tracking,detection, dataset, sequence, tracker )
 
 index =strcmp({sequences.(dataset).name},sequence); %index of sequence in the dataset
 

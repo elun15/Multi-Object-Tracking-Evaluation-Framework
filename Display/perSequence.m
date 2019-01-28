@@ -26,7 +26,7 @@ clc; clear all; close all;
 
 addpath(genpath('./external'));
 
-load('results_tracking.mat'); % Struct with the computed results
+load('./Mat/results_tracking.mat'); % Struct with the computed results
 
 list_trackers = {'MATLAB','SORT'};
 dataset = ['MOT16_train'];

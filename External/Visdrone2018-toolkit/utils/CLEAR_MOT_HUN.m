@@ -47,7 +47,7 @@ resMat(:,2) = ic2;
 
 % Evaluate
 VERBOSE = false;
-[mme, c, fp, m, g, d, alltracked, allfalsepos] = clearMOTMex(gtMat, reslMat, threshold, world, VERBOSE);
+[mme, c, fp, m, g, d, alltracked, allfalsepos] = clearMOTMex(gtMat, resMat, threshold, world, VERBOSE);
 Fgt = max(gtMat(:,1)); % Assumes first gt frame is 1 //Fgtָ���֡��
 Ngt = length(unique(gtMat(:,2)));  %gt���Ŀ����
 F = max(resMat(:,1)); %res���Ŀ����

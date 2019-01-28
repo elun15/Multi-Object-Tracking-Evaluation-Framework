@@ -73,8 +73,8 @@ for f = 1:numel(names_frames)
     updateUnassignedTracks();
     deleteLostTracks();
     createNewTracks();
-    %res_data = saveResults(res_data,f);
-    displayTrackingResults();
+    res_data = saveResults(res_data,f);
+    %displayTrackingResults();
 end
 
 

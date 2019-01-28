@@ -1,16 +1,17 @@
 clc; clear all; close all;
 
-addpath(genpath('./external'), gentpath('./Evaluation'));
+addpath(genpath('./External'), genpath('./Evaluation'));
 
-load('./Datasets/sequences.mat'); % Sequences we want to evaluate
-load('./Results/results_tracking.mat'); % Struct with the computed results
+load('./Mat/sequences.mat'); % Sequences we want to evaluate
+load('./Mat/results_tracking.mat'); % Struct with the computed results
 
 list_detections = fieldnames(results_tracking);
+%list_detections ={'p050_r050_s04_s02'};
 
 list_datasets = fieldnames(sequences);
-list_trackers = {'MATLAB'};
-
-list_detections = {'p050_r050_s04_s02'};
+list_trackers = {'SORT','MATLAB'};
+%list_datasets = {'Visdrone2018_train'};
+% list_sequences = {'uav0000013_00000_v'};
 
 % Evaluate each sequence
 for d = 1:numel(list_detections)
@@ -26,8 +27,8 @@ for d = 1:numel(list_detections)
             printing = 1;
             saving = 1;
             
-            %list_sequences = {results_tracking.(list_detections{d}).(list_trackers{t}).(list_datasets{dat}).name};
-            list_sequences = {sequences.(list_datasets{dat}).name};
+            list_sequences = {results_tracking.(list_detections{d}).(list_trackers{t}).(list_datasets{dat}).name};
+            %list_sequences = {sequences.(list_datasets{dat}).name};
             
             for s = 1:numel(list_sequences)
                 tic
@@ -41,8 +42,7 @@ for d = 1:numel(list_detections)
         end
     end
     
-    
-end
+    end
 
-save('results_tracking.mat','results_tracking');
+save('./Mat/results_eval_tracking.mat','results_tracking');
 

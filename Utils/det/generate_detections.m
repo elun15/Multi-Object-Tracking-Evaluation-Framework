@@ -3,6 +3,8 @@
 %
 clc; clear all; close all;
 
+addpath(genpath('./Utils/'));
+
 % Paths
 baseFolder = pwd;
 detections_path = [baseFolder '/Results/Detections/'];
@@ -61,13 +63,14 @@ if strcmp(option, 'gt')
                 %                 imshow(img2);
                 det_path = [detections_path datasets_names{d} '/' sequences_names{s} '/' option '/'];
                 if not(exist(det_path))
-                    mkdir(path);
+                    mkdir(det_path);
                 end
                 
                 detections_file = [detections_path datasets_names{d} '/' sequences_names{s} '/' option '/' sequences_names{s}   '.txt'];
                 if  exist(detections_file)
                     disp(['Overwritten ' option '/' sequences_names{s} '.txt'])
                 else
+                    disp(['Written ' option '/' sequences_names{s} '.txt'])
                 end
                 
                 dlmwrite(detections_file,  det_data);

@@ -10,6 +10,8 @@
 clc; clear; close all force;
 warning off;
 sequences = struct;
+addpath(genpath('./Trackers/'));
+addpath(genpath('./Utils/'));
 
 %% PATH and PARAMETERS
 
@@ -48,10 +50,10 @@ save('sequences.mat','sequences');
 
 %% SELECTED TRACKERS AND METRICS
 
-list_trackers = {'SORT','MATLAB'};
-list_trackers = {'MATLAB'};
-list_detections = {'gt'};
+list_trackers = {'MATLAB','SORT'};
+%list_detections = {'gt'};
 
+list_detections={};
 P_range = [0.5 0.9];
 R_range = [0.5 0.9];
 sigma_1 = 4;                  % variance for FP positions
@@ -67,9 +69,11 @@ end
 %TO DO: comprobar que existen las detecciones seleccionadas, si no, mostrar
 %un mensaje y seguir
 
-
 % PERFORM TRACKING
 results_tracking = struct;
+if exist('./Mat/results_tracking.mat')
+    load('./Mat/results_tracking.mat');
+end
 
 for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
     
@@ -77,7 +81,20 @@ for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
         
         for dat = 1:(num_datasets)
             
-            results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})=struct;
+            if not(isfield(results_tracking,(list_detections{d}))) %if not exist the detection field
+                results_tracking.(list_detections{d})=struct;
+            end
+            
+            
+            if not(isfield(results_tracking.(list_detections{d}),(list_trackers{t})))
+                results_tracking.(list_detections{d}).(list_trackers{t}) = struct;
+            end
+            
+            
+            if not(isfield(results_tracking.(list_detections{d}).(list_trackers{t}),(datasets_names{dat}) ))
+                
+                results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})=struct;
+            end
             
             for s = 1: numel(eval(['sequences.' datasets_names{dat} ' ;']))
                 
@@ -90,29 +107,37 @@ for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
                 
                 tic;
                 if (strcmp(list_trackers{t},'SORT'))
+                    path_results=results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path;
                     
-                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = run_SORT(sequences.(datasets_names{dat})(s) ,list_detections{d});
-                end
-                if (strcmp(list_trackers{t},'MATLAB'))
-                    
-                    result_matrix = MotionBasedMultiObjectTrackingExample(sequences.(datasets_names{dat})(s),list_detections{d});
-                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = result_matrix;
-                    path=results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path;
-                    
-                    if not(isdir(path))
-                        mkdir(path);
+                    if not(exist(path_results,'dir'))
+                        results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = run_SORT(sequences.(datasets_names{dat})(s) ,list_detections{d});
+                    else
+                        disp('Already exists.');
                     end
                     
-                    dlmwrite(fullfile(path,[sequences.(datasets_names{dat})(s).name '.txt']),result_matrix);
+                end
+                
+                if (strcmp(list_trackers{t},'MATLAB'))
+                    
+                    path_results=results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path;
+                    
+                    if not(exist(path_results,'dir'))
+                        
+                        mkdir(path_results);
+                        result_matrix = MotionBasedMultiObjectTrackingExample(sequences.(datasets_names{dat})(s),list_detections{d});
+                        results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = result_matrix;
+                        dlmwrite(fullfile(path_results,[sequences.(datasets_names{dat})(s).name '.txt']),result_matrix);
+                        
+                    else
+                        disp('Already exists.');
+                    end
                     
                 end
-                               
+                
                 toc;
                 
             end
         end
     end
 end
-%save('results_tracking.mat','results_tracking')
-
-%
+save('./Mat/results_tracking.mat','results_tracking')
