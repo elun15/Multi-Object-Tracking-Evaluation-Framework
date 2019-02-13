@@ -11,9 +11,9 @@ sequences = sequences.sequences;
 results_tracking = load('./Mat/results_tracking.mat'); % Struct with the computed results
 results_tracking = results_tracking.results_tracking;
 % Select what to display
-detection = ['p050_r050_s04_s02'];
-dataset = ['Visdrone2018_train']; 
-sequence = ['uav0000013_00000_v']; 
+detection = ['gt'];
+dataset = ['MOT16_train']; 
+sequence = ['MOT16-04']; 
 tracker = {'SORT'};
 
 displayTracking(sequences, results_tracking,detection, dataset, sequence, tracker);

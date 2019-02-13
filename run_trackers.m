@@ -7,11 +7,13 @@
 
 %% INITIALIZE
 
-clc; clear; close all force;
+clc; clear all; close all force;
 warning off;
 sequences = struct;
 addpath(genpath('./Trackers/'));
 addpath(genpath('./Utils/'));
+addpath(genpath('./External/'));
+addpath(genpath('./Results/'));
 
 %% PATH and PARAMETERS
 
@@ -30,7 +32,7 @@ num_datasets=0;
 
 for i = 1:numel(datasets_names)
     
-    eval(['sequences.' datasets_names{i} '= struct ;']);
+    eval(['sequences.' datasets_names{i} ' = struct ;']);
     [sequences_names, sequences_paths] = get_folders(datasets_paths{i});
     num_datasets = num_datasets+1;
     
@@ -46,22 +48,23 @@ for i = 1:numel(datasets_names)
     
 end
 
-save('sequences.mat','sequences');
+save('./Mat/sequences.mat','sequences');
 
 %% SELECTED TRACKERS AND METRICS
 
-list_trackers = {'MATLAB','SORT'};
-%list_detections = {'gt'};
+list_trackers = {'GOG','SORT','MATLAB'}; %'SORT'
+list_detections = {'gt'};
 
-list_detections={};
-P_range = [0.5 0.9];
-R_range = [0.5 0.9];
+% P_range = [0.5 0.9];
+% R_range = [0.5 0.9];
+P_range = [0.6 0.7 0.8];
+R_range = [0.6 0.7 0.8];
 sigma_1 = 4;                  % variance for FP positions
-sigma_2 = 2;                  % variance for BB sizes
 
 for p = P_range
     for r = R_range
-        list_detections{end+1} = sprintf('p%03d_r%03d_s%02d_s%02d',100*p,100*r,sigma_1,sigma_2);
+        % list_detections{end+1} = sprintf('p%03d_r%03d_s%02d_s%02d',100*p,100*r,sigma_1,sigma_2);
+        list_detections{end+1} = sprintf('p%03d_r%03d_s%02d',100*p,100*r,sigma_1);
         
     end
 end
@@ -77,6 +80,7 @@ end
 
 for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
     
+    
     for t = 1:numel(list_trackers)
         
         for dat = 1:(num_datasets)
@@ -85,11 +89,9 @@ for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
                 results_tracking.(list_detections{d})=struct;
             end
             
-            
             if not(isfield(results_tracking.(list_detections{d}),(list_trackers{t})))
                 results_tracking.(list_detections{d}).(list_trackers{t}) = struct;
             end
-            
             
             if not(isfield(results_tracking.(list_detections{d}).(list_trackers{t}),(datasets_names{dat}) ))
                 
@@ -97,46 +99,69 @@ for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
             end
             
             for s = 1: numel(eval(['sequences.' datasets_names{dat} ' ;']))
-                
-                results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).name = sequences.(datasets_names{dat})(s).name;
-                
-                disp(['Running ' list_trackers{t} ' tracker. ' sequences.(datasets_names{dat})(s).name ' sequence with ' list_detections{d} ' detections.']);
-                
-                sequences.(datasets_names{dat})(s).results_tracking_paths  =   fullfile(results_tracking_path,list_trackers{t}, datasets_names{dat}, sequences.(datasets_names{dat})(s).name , list_detections{d});
-                results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path =  sequences.(datasets_names{dat})(s).results_tracking_paths ;
-                
-                tic;
-                if (strcmp(list_trackers{t},'SORT'))
-                    path_results=results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path;
+                if s< 11
+                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).name = sequences.(datasets_names{dat})(s).name;
                     
-                    if not(exist(path_results,'dir'))
-                        results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = run_SORT(sequences.(datasets_names{dat})(s) ,list_detections{d});
-                    else
-                        disp('Already exists.');
-                    end
+                    disp(['Running ' list_trackers{t} ' tracker. ' sequences.(datasets_names{dat})(s).name ' sequence with ' list_detections{d} ' detections.']);
                     
-                end
-                
-                if (strcmp(list_trackers{t},'MATLAB'))
+                    sequences.(datasets_names{dat})(s).results_tracking_paths  =   fullfile(results_tracking_path,list_trackers{t}, datasets_names{dat}, sequences.(datasets_names{dat})(s).name , list_detections{d});
+                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path =  sequences.(datasets_names{dat})(s).results_tracking_paths ;
+                    
+                    tic;
                     
                     path_results=results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).path;
                     
-                    if not(exist(path_results,'dir'))
+                    %% GOG
+                    if (strcmp(list_trackers{t},'GOG'))
                         
-                        mkdir(path_results);
-                        result_matrix = MotionBasedMultiObjectTrackingExample(sequences.(datasets_names{dat})(s),list_detections{d});
-                        results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = result_matrix;
-                        dlmwrite(fullfile(path_results,[sequences.(datasets_names{dat})(s).name '.txt']),result_matrix);
+                        if not(exist(path_results,'dir'))
+                            
+                            mkdir(path_results);
+                            result_matrix = run_tracker_GOG(sequences.(datasets_names{dat})(s), list_detections{d});
+                            results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = single(result_matrix);
+                            dlmwrite(fullfile(path_results,[sequences.(datasets_names{dat})(s).name '.txt']),result_matrix);
+                        else
+                            disp('Already exists.');
+                        end
                         
-                    else
-                        disp('Already exists.');
                     end
                     
+                    %% SORT
+                    if (strcmp(list_trackers{t},'SORT'))
+                        
+                        if not(exist(path_results,'dir'))
+                            result_matrix = run_SORT(sequences.(datasets_names{dat})(s) ,list_detections{d});
+                            
+                            results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = single(result_matrix);
+                        else
+                            disp('Already exists.');
+                        end
+                        
+                    end
+                    
+                    %% MATLAB
+                    
+                    if (strcmp(list_trackers{t},'MATLAB'))
+                        
+                        if not(exist(path_results,'dir'))
+                            
+                            mkdir(path_results);
+                            result_matrix = MotionBasedMultiObjectTrackingExample(sequences.(datasets_names{dat})(s),list_detections{d});
+                            
+                            results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = single(round(result_matrix));
+                            dlmwrite(fullfile(path_results,[sequences.(datasets_names{dat})(s).name '.txt']),result_matrix);
+                            
+                        else
+                            disp('Already exists.');
+                        end
+                        
+                        
+                    end
+                    toc;
+                    
                 end
-                
-                toc;
-                
             end
+            
         end
     end
 end
