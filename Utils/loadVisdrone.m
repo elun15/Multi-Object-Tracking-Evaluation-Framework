@@ -21,7 +21,7 @@ end
 
 addpath(new_visdrone_path);
 
-for s = 1 : 3  %numel(annotations_names)
+for s = 1 : numel(annotations_names)
     name =sequences_names{s} ;
     
     new_sequence_path = fullfile(new_visdrone_path, name);
