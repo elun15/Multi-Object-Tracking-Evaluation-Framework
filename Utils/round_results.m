@@ -1,9 +1,10 @@
-%% Run_trackers
-%
-
 %   Author : Elena luna
 %   VPULab - EPS - UAM
 %
+
+% Only useful if results are saven in double format
+% This routine load results tracking mat, rounds them and converts them to
+% single format
 
 %% INITIALIZE
 
@@ -55,19 +56,17 @@ for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
             list_sequences = {results_tracking.(list_detections{d}).(list_trackers{t}).(list_datasets{dat}).name};
             
             for s = 1: numel(list_sequences)
-               
-                    temp = results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result;
-                    results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = single(round(temp));
-                    
-                    disp(['Rounding ' list_trackers{t} ' tracker. ' list_sequences{s} ' sequence with ' list_detections{d} ' detections.']);
-                    
-                   
-                    
-                    
-                end
+                
+                temp = results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result;
+                results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).result = single(round(temp));
+                
+                disp(['Rounding ' list_trackers{t} ' tracker. ' list_sequences{s} ' sequence with ' list_detections{d} ' detections.']);
+                
+                
             end
-            
         end
+        
     end
+end
 
 save('./Mat/results_tracking_rounded.mat','results_tracking')

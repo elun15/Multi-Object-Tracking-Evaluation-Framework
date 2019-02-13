@@ -1,6 +1,10 @@
+%   Author : Elena luna
+%   VPULab - EPS - UAM
+
 %
-% Main routine to load Visdrone dataset
-%
+% Main routine to load Visdrone dataset in the Framework format
+% Visdrone files must be downloaded out of the framework in "visdrone_path" variable
+% New path inside the framework will be automaticaly generated %
 
 clc; clear all; close all;
 

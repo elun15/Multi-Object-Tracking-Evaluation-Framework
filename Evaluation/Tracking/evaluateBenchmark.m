@@ -1,3 +1,8 @@
+% Ref: https://bitbucket.org/amilan/motchallenge-devkit
+% Modified by ELena Luna VPU-Lab 
+
+% This function provides unified metrics from several sets of metrics
+
 function metsBenchmark = evaluateBenchmark(allMets, world)
 
 % Aggregate scores from all sequences over each object category

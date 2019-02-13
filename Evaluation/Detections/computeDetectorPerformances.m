@@ -1,10 +1,12 @@
+
+% Given detections and GT of a sequence, it computes P and R of the
+% provided detections bboxes
+
 function [detP, detR] = computeDetectorPerformances(myDet, myGt,frames_info, display_flag)
 fn = 0;
 fp = 0;
 tp = 0;
 
-% myDet = dlmread(detFile);
-% myGt  = dlmread(gtFile);
 
 frames = unique(myDet(:, 1));
 for f = 1 : length(frames)
@@ -13,18 +15,16 @@ for f = 1 : length(frames)
     index = (myGt(:, 1) == frames(f)& myGt(:, 7) ~= 0);
     myGtFrameData = myGt(index, 3:6);
     
-%     % plot bboxes in frame
-%     if display_flag
-%         
-%         frame  = imread(fullfile(frames_info(f).folder,frames_info(f).name));
-%         frame = insertShape(frame, 'rectangle', myGtFrameData,'LineWidth',4,'Color','green');
-%         frame = insertShape(frame, 'rectangle', myDetFrameData,'LineWidth',4,'Color','red');
-%         imshow(frame);
-%         title(['GT (green) and dets (red) for ' frames_info(f).name])
-%         pause(0.2);
-%     end
-    
-    
+    % plot bboxes in frame
+    if display_flag
+        
+        frame  = imread(fullfile(frames_info(f).folder,frames_info(f).name));
+        frame = insertShape(frame, 'rectangle', myGtFrameData,'LineWidth',4,'Color','green');
+        frame = insertShape(frame, 'rectangle', myDetFrameData,'LineWidth',4,'Color','red');
+        imshow(frame);
+        title(['GT (green) and dets (red) for ' frames_info(f).name])
+        pause(0.2);
+    end
     
     costs = zeros(size(myDetFrameData, 1), size(myGtFrameData, 1));
     

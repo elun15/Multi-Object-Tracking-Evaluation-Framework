@@ -1,3 +1,6 @@
+%   Author : Elena luna
+%   VPULab - EPS - UAM
+
 %
 % Main routine to generate new detections from GT bounding boxes
 %
@@ -40,7 +43,7 @@ end
 %% GENERATE DETECTION FROM GT (keeping all gt boxes)
 % detections are save in a .txt file in  ./Results/Detections/..
 
-option = '0';
+option = 'gt'; % leave empty to not compute gt detections
 
 if strcmp(option, 'gt')
     
@@ -110,7 +113,7 @@ for d = 1:size(gt_data,2) %j = dataset
                 for r = R_range
                     
                     option = sprintf('p%03d_r%03d_s%02d',100*p,100*r,sigma_1);
-                    data_modified = modify_GT_PR_keepBB(p,r,det_data,sigma_1); % return: 1 -1 bbox
+                    data_modified = modify_GT_PR(p,r,det_data,sigma_1); % return: 1 -1 bbox
                      
                     % write detection text file
                     if (not(exist([detections_path datasets_names{d} '/' sequences_names{s} '/' option '/'])))

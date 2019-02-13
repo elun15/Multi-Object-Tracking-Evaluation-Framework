@@ -1,3 +1,8 @@
+%   Author : Elena luna
+%   VPULab - EPS - UAM
+
+% This functions provides a list with the existing folders in a path 
+
 function [names,dirs] = get_folders(path)
 
 % This routine get names of folders existing in a directory 

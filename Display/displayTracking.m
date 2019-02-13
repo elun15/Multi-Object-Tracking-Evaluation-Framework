@@ -1,6 +1,12 @@
-lfunction [] = displayTracking(sequences, results_tracking,detection, dataset, sequence, tracker )
+%   Author : Elena luna
+%   VPULab - EPS - UAM
 
-index =strcmp({sequences.(dataset).name},sequence); %index of sequence in the dataset
+% This function subplot the provided tracking results  and the
+% correspondent GT
+
+function [] = displayTracking(sequences, results_tracking,detection, dataset, sequence, tracker )
+
+index = strcmp({sequences.(dataset).name},sequence); %index of sequence in the dataset
 
 path_img = fullfile(sequences.(dataset)(index).path,'img1','*.jpg');
 path_det = fullfile(sequences.(dataset)(index).detections_path,detection,[sequence '.txt']);
@@ -14,8 +20,8 @@ end
 
 det_data = dlmread(path_det);
 
-
 disp('Displaying...')
+
 for f = 1:numel(frames)
     
     det_bboxes = det_data(det_data(:,1)==f, 3:6);
@@ -47,10 +53,10 @@ for f = 1:numel(frames)
         p = p+1;
         
     end
+    disp('Paused. Press any key');
     pause();
     
 end
-
 
 disp('Done')
 

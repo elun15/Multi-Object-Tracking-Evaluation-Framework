@@ -1,9 +1,8 @@
-%% Run_trackers
-%
-
 %   Author : Elena luna
 %   VPULab - EPS - UAM
-%
+
+% This script run the chosen trackers over the desired sequences and save
+% tracking results in a .mat structure
 
 %% INITIALIZE
 
@@ -63,13 +62,13 @@ sigma_1 = 4;                  % variance for FP positions
 
 for p = P_range
     for r = R_range
-        % list_detections{end+1} = sprintf('p%03d_r%03d_s%02d_s%02d',100*p,100*r,sigma_1,sigma_2);
+       
         list_detections{end+1} = sprintf('p%03d_r%03d_s%02d',100*p,100*r,sigma_1);
         
     end
 end
 
-%TO DO: comprobar que existen las detecciones seleccionadas, si no, mostrar
+%opcion: comprobar que existen las detecciones seleccionadas, si no, mostrar
 %un mensaje y seguir
 
 % PERFORM TRACKING
@@ -99,7 +98,8 @@ for d=1:numel(list_detections) % e.g "gt", "p0.5" , "r0.5"
             end
             
             for s = 1: numel(eval(['sequences.' datasets_names{dat} ' ;']))
-                if s< 11
+                if s< 11 % limit max number of sequences per dataset to 10 (e.g. Visdrone) due to computational time 
+                                       
                     results_tracking.(list_detections{d}).(list_trackers{t}).(datasets_names{dat})(s).name = sequences.(datasets_names{dat})(s).name;
                     
                     disp(['Running ' list_trackers{t} ' tracker. ' sequences.(datasets_names{dat})(s).name ' sequence with ' list_detections{d} ' detections.']);

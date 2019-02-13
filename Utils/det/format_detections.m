@@ -1,3 +1,6 @@
+%   Author : Elena luna
+%   VPULab - EPS - UAM
+
 %
 % Script to format provided MOT16/17 detections files to the desired format
 

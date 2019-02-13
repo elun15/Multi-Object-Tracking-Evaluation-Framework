@@ -1,5 +1,10 @@
+% Ref: https://bitbucket.org/amilan/motchallenge-devkit
+% Modified by ELena Luna VPU-Lab 
+
+% This function provide evaluation metrics per class for a sequence
+
 function perClassMets = classEval(gtsortdata, ressortdata, evalClassSet, sequenceName)
-% llamada a CLEAR dentro de toolkit
+% (call to this function from toolkit folder)
 threshold = 0.5;
 world = 0;
 

@@ -1,5 +1,9 @@
+%   Author : Elena luna
+%   VPULab - EPS - UAM
+
 %
-% Main routine to generate new detections from GT bounding boxes
+% Main routine to generate new detections from GT bounding boxes MODIFYING
+% SIZE OF ALL BBOXES (NOT USED)
 %
 clc; clear all; close all;
 
@@ -107,7 +111,7 @@ for d = 1:size(gt_data,2) %j = dataset
                 for r = R_range
                     
                     option = sprintf('p%03d_r%03d_s%02d_s%02d',100*p,100*r,sigma_1,sigma_2);
-                    data_modified = modify_GT_PR(p,r,det_data,sigma_1,sigma_2); % return: 1 -1 bbox
+                    data_modified = modify_GT_PR_modifyBB(p,r,det_data,sigma_1,sigma_2); % return: 1 -1 bbox
                     data_modified(:,7) = 1;
                     data_modified(:,8) = 1;
                     data_modified(:,9) = -1;

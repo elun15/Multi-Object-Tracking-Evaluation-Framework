@@ -1,7 +1,8 @@
+%   Author : Elena luna
+%   VPULab - EPS - UAM
+
+
 function visualizeDetections(baseFolder, datasetName, filename)
-
-close all;
-
 %% LOAD DATA
 data = dlmread(fullfile(baseFolder, datasetName, filename));
 frames = min((data(:, 1))) : max((data(:, 1)));

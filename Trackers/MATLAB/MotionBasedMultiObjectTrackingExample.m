@@ -4,6 +4,9 @@
 %
 %   Copyright 2014 The MathWorks, Inc.
 
+
+% Modified by Elena Luna - VPU Lab
+
 %%
 % Detection of moving objects and motion-based tracking are important
 % components of many computer vision applications, including activity
@@ -24,7 +27,7 @@
 % given frame, some detections may be assigned to tracks, while other
 % detections and tracks may remain unassigned. The assigned tracks are
 % updated using the corresponding detections. The unassigned tracks are
-% marked invisible. An unassigned detection begins a new track.
+% marked , detector and datasetinvisible. An unassigned detection begins a new track.
 %
 % Each track keeps count of the number of consecutive frames, where it
 % remained unassigned. If the count exceeds a specified threshold, the
