@@ -13,11 +13,6 @@
 % # Detecting moving objects in each frame
 % # Associating the detections corresponding to the same object over time
 %
-% The detection of moving objects uses a background subtraction algorithm
-% based on Gaussian mixture models. Morphological operations are applied to
-% the resulting foreground mask to eliminate noise. Finally, blob analysis
-% detects groups of connected pixels, which are likely to correspond to
-% moving objects.
 %
 % The association of detections to the same object is based solely on
 % motion. The motion of each track is estimated by a Kalman filter. The
@@ -288,7 +283,7 @@ end
             return;
         end
         
-        invisibleForTooLong = 10;
+        invisibleForTooLong = 2; %10 o 20
         ageThreshold = 8;
         
         % Compute the fraction of the track's age for which it was visible.
@@ -296,7 +291,10 @@ end
         totalVisibleCounts = [tracks(:).totalVisibleCount];
         visibility = totalVisibleCounts ./ ages;
         
-        % Find the indices of 'lost' tracks.
+        % Find the indices of 'lost' tracks. ORIGINAL:
+%         lostInds = (ages < ageThreshold & visibility < 0.6) | ...
+%             [tracks(:).consecutiveInvisibleCount] >= invisibleForTooLong;
+        
         lostInds = (ages < ageThreshold & visibility < 0.6) | ...
             [tracks(:).consecutiveInvisibleCount] >= invisibleForTooLong;
         
