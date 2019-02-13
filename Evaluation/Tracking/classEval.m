@@ -25,7 +25,7 @@ for k = 1:length(evalClassSet)
         structure.class = className;
         structure.m    = [];
         structure.IDmeasures = [];
-        structure(ind).additionalInfo = [];
-        perClassMets(k) = structure(ind);        
+        structure.additionalInfo = [];
+        perClassMets(k) = structure;        
     end
 end
