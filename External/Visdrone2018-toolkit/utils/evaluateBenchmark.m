@@ -1,4 +1,4 @@
-function metsBenchmark = evaluateBenchmark(allMets, world)
+function metsBenchmark = evaluateBenchmark(allMets)
 
 % Aggregate scores from all sequences over each object category
 MT = 0; PT = 0; ML = 0; FRA = 0;
@@ -45,9 +45,9 @@ IDF1 = IDF1 * 100;
 
 FAR = falsepositives / Fgt;
 MOTP = (1-distsum/Nc) * 100; 
-if(world)
-    MOTP = MOTP / td; 
-end
+% if(world)
+%     MOTP = MOTP / td; 
+% end
 if(isnan(MOTP))
     MOTP = 0; 
 end

@@ -83,7 +83,7 @@ perClassMets = classEval(gtsortdata, ressortdata, evalClassSet, sequence_info.na
 
 % save([resPath '/perClassMets.mat'],'perClassMets'); % save struct with metrics per class
 
-allClassMets = evaluateBenchmark(perClassMets, world); % unify metrics of all classes
+allClassMets = evaluateBenchmark(perClassMets); % unify metrics of all classes
 
 fprintf(' ********************* Sequence %s Results with %s detections *********************\n', sequence_info.name,name_detection);
 if printing == 1

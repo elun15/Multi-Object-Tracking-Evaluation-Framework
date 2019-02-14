@@ -99,19 +99,20 @@ FRA=sum(fr);
 % assert(Ngt==MT+PT+ML,'Hmm... Not all tracks classified correctly.');
 metrics=[recall, precision, FAR, Ngt, MT, PT, ML, falsepositives, missed, idswitches, FRA, MOTA, MOTP, MOTAL];
 
-additionalInfo.alltracked=alltracked;
-additionalInfo.allfalsepos=allfalsepos;
-additionalInfo.m = m;
-additionalInfo.fp = fp;
-additionalInfo.mme = mme;
-additionalInfo.g = g;
-additionalInfo.c = c;
-additionalInfo.Fgt = Fgt;
-additionalInfo.Ngt = Ngt;
-additionalInfo.d = d;
-additionalInfo.MT = MT;
-additionalInfo.PT = PT;
-additionalInfo.ML = ML;
-additionalInfo.FRA = FRA;
-additionalInfo.td = threshold;
+
+additionalInfo.mme = single(mme);
+additionalInfo.alltracked= single(alltracked); % single
+additionalInfo.allfalsepos=single(allfalsepos); %single
+additionalInfo.m = single(m); %single
+additionalInfo.fp = single(fp); %single
+additionalInfo.g = single(g); %single
+additionalInfo.c = single(c); %single
+additionalInfo.Fgt =single(Fgt); %single
+additionalInfo.Ngt = single(Ngt); %single
+additionalInfo.d = single(d); %single
+additionalInfo.MT = single(MT); %single
+additionalInfo.PT = single(PT); %single
+additionalInfo.ML = single(ML); %single
+additionalInfo.FRA = single(FRA); %single
+additionalInfo.td = single(threshold); %single;
 end 
